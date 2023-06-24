@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-
+from app01.models import StuInfo, TeacherInfo
 # Create your views here.
 # URL 与函数的对应关系
 
@@ -8,14 +8,31 @@ def index(request):
     return HttpResponse("欢迎使用")
 
 
-def users(request):
-    return HttpResponse("用户页面")
+def user(request):
+    stu_list = StuInfo.objects.all()
 
-def usersadd(request):
+    return render(request, "user.html", {"stu_list":stu_list})
+
+def useradd(request):
     #return HttpResponse("用户添加")
     # 会去 app01 templates 目录下找user_add.html文件（根据app的注册顺序逐一找，从第一个app开始，然后app2）
-    return render(request, "user_add.html")
+    if request.method == "GET":
+        return render(request, "user_add.html")
+    # 获取用户提交的数据
+    studentname = request.POST.get("studentname")
+    studentid = request.POST.get("studentid")
+    pwd = request.POST.get("pwd")
+    # score = request.POST.get("score")
 
+    # 添加到数据库
+    StuInfo.objects.create(username=studentname, stuid=studentid, password=pwd)
+    # 添加成功自动跳转
+    return redirect("http://127.0.0.1:8000/user/")
+
+def userdelete(request):
+    stu_id = request.GET.get('stuid')
+    StuInfo.objects.filter(id=stu_id).delete()
+    return redirect("http://127.0.0.1:8000/user/")
 
 def tpl(request):
     name = "wjm"
@@ -53,3 +70,26 @@ def login(request):
 
         return render(request, "login.html", {"error_msg":"用户名或密码错误"})
 
+
+def orm(request):
+    # 操作表中数据
+    ####### 1 新增
+    # StuInfo.objects.create(username='s002', stuid='002', password='s002')
+    # StuInfo.objects.create(username='s003', stuid='003', password='s003')
+    # StuInfo.objects.create(username='s004', stuid='004', password='s004')
+    # StuInfo.objects.create(username='s005', stuid='005', password='s005')
+    # StuInfo.objects.create(username='s006', stuid='006', password='s006')
+    # TeacherInfo.objects.create(teacherid='t001', password='t001')
+    # TeacherInfo.objects.create(teacherid='t002', password='t002')
+    # TeacherInfo.objects.create(teacherid='t003', password='t003')
+    ####### 2 删除
+    # TeacherInfo.objects.filter(teacherid='t001').delete()
+    ####### 3 获取数据
+    # data_list = TeacherInfo.objects.all()
+    # #data_list = TeacherInfo.objects.filter(id=1)#也可以筛选
+    # for obj in data_list:
+    #     print(obj.teacherid, obj.password)
+    ####### 4 更新数据
+    #StuInfo.objects.filter(username='s001').update(stuid = '1')
+
+    return HttpResponse("success!!!")

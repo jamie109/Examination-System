@@ -20,9 +20,11 @@ from app01 import views
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('index/', views.index), # 只要访问index，就会找view的index函数
-    path('users/', views.users),
-    path('users/add/', views.usersadd),
+    path('user/', views.user),
+    path('user/add/', views.useradd),
+    path('user/delete/', views.userdelete),
     path('tpl/', views.tpl),
     path('news/', views.news),
     path('login/', views.login),
+    path('orm/', views.orm)
 ]
