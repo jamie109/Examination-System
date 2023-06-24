@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from app01 import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
+    path('index/', views.index), # 只要访问index，就会找view的index函数
+    path('users/', views.users),
+    path('users/add/', views.usersadd),
 ]
