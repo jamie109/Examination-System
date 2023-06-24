@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
 # URL 与函数的对应关系
@@ -15,3 +15,41 @@ def usersadd(request):
     #return HttpResponse("用户添加")
     # 会去 app01 templates 目录下找user_add.html文件（根据app的注册顺序逐一找，从第一个app开始，然后app2）
     return render(request, "user_add.html")
+
+
+def tpl(request):
+    name = "wjm"
+    roles = ["gu案例元", "vfaigg"]
+    user_info = {"1":"aaa", "2":"bbbb"}
+    return render(request, "tpl.html", {"n1":name,"n2":roles, "n3":user_info})
+
+def news(request):
+    # request内部封装了用户请求发出的数据
+    # 1、获取请求方法 GET POST
+    print(request.method)
+    # 2、请求发来的值 /sth/？n1=12345&n2=999
+    print(request.GET)
+    # 3、在请求体中提交数据
+    print(request.POST)
+    # [响应]将字符串返回
+    #return HttpResponse("用户页面")
+    # [响应]重定向到其他页面
+    return redirect("https://www.baidu.com")
+    # [响应]将页面返回，读取html内容，渲染，替换---返回给用户浏览器
+    #return render(request, "news.html")
+
+
+def login(request):
+    if(request.method == "GET"):
+        return render(request, "login.html")
+
+    if(request.method == "POST"):
+        print(request.POST)
+        username = request.POST.get("user")
+        password = request.POST.get("pwd")
+        if username == "wjm" and password == "123":
+            #return HttpResponse("登录成功")
+            return redirect("https://www.baidu.com")
+
+        return render(request, "login.html", {"error_msg":"用户名或密码错误"})
+

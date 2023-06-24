@@ -22,4 +22,7 @@ urlpatterns = [
     path('index/', views.index), # 只要访问index，就会找view的index函数
     path('users/', views.users),
     path('users/add/', views.usersadd),
+    path('tpl/', views.tpl),
+    path('news/', views.news),
+    path('login/', views.login),
 ]
