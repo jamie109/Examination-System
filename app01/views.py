@@ -5,7 +5,7 @@ from app01.models import StuInfo, TeacherInfo
 
 
 def index(request):
-    return HttpResponse("欢迎使用")
+    return render(request, "index.html")#HttpResponse("欢迎使用")
 
 
 def user(request):
