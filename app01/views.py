@@ -140,8 +140,8 @@ def stuedit(request, stuid):
 def stusearch(request):
     searchname = request.GET.get("searchname")
     print(searchname)
-    stu_obj_search = StuInfo.objects.filter(stuname=searchname).first()
-    print(stu_obj_search)
+    stu_obj_search = StuInfo.objects.filter(stuname=searchname)#.first()
+    #print(stu_obj_search)
     return render(request, "stu_search.html", {"searchobj":stu_obj_search})
 
 # def stusearchres(request, searchname):
@@ -156,4 +156,51 @@ class TeacherInfo(models.Model):
     password = models.CharField(max_length=64)
 """
 def teainfo(request):
-    return render(request, "teainfo.html")
+    tea_list = TeacherInfo.objects.all()
+    return render(request, "teainfo.html", {"tea_list":tea_list})
+
+def teaadd(request):
+    """  添加教师信息  """
+    if request.method == "GET":
+        return render(request, "tea_add.html")
+    # 获取用户提交的数据
+    name = request.POST.get("teachername")
+    tid = request.POST.get("teacherid")
+    school = request.POST.get("teacherschool")
+    pwd = request.POST.get("teacherpwd")
+
+    # 添加到数据库
+    TeacherInfo.objects.create(teaname=name, teaid=tid, teaschool=school, password=pwd)
+    # 添加成功自动跳转
+    return redirect("http://127.0.0.1:8000/teainfo/")
+
+def teadelete(request):
+    """删除教师"""
+    tea_id = request.GET.get('teaid')
+    TeacherInfo.objects.filter(id=tea_id).delete()
+    return redirect("http://127.0.0.1:8000/teainfo/")
+
+def teaedit(request, teaid):
+    """编辑教师信息"""
+    if request.method == "GET":
+        tea_obj = TeacherInfo.objects.filter(id=teaid).first()
+        return render(request, "tea_edit.html", {"tea_obj": tea_obj})
+
+    # 获取管理员修改后的数据
+    name = request.POST.get("teachername")
+    tid = request.POST.get("teacherid")
+    school = request.POST.get("teacherschool")
+    pwd = request.POST.get("teacherpwd")
+
+    TeacherInfo.objects.filter(id=teaid).update(teaname=name, teaid=tid, teaschool=school, password=pwd)
+    # 修改成功自动跳转
+    return redirect("http://127.0.0.1:8000/teainfo/")
+
+def teasearch(request):
+    searchname = request.GET.get("searchname")
+    #print(searchname)
+    # 这里不加first，当查找不到对象的时候，页面为空
+    teacher_obj_search = TeacherInfo.objects.filter(teaname=searchname)#.first()
+    # print(teacher_obj_search)
+    # print(teacher_obj_search.first())
+    return render(request, "tea_search.html", {"searchobj":teacher_obj_search})

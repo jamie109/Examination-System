@@ -1,0 +1,108 @@
+{% load  static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Edit</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.css' %}">
+    <style>
+        .navbar {
+            border-right: 0;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">阅卷教师信息管理：编辑教师信息</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                {#          <li>#}
+                {#              <form class="navbar-form navbar-left">#}
+                {#        <div class="form-group">#}
+                {#          <input type="text" class="form-control" placeholder="输入学生姓名">#}
+                {#        </div>#}
+                {#        <button type="submit" class="btn btn-default" >确定</button>#}
+                {#      </form>#}
+                {#          </li>#}
+                <li><a href="http://127.0.0.1:8000/teainfo/edit/">刷新</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">你好，管理员！</a></li>
+                {#        <li>#}
+                {#            <a href="http://127.0.0.1:8000/teainfo/">教师信息管理</a>#}
+                {#        </li>#}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="margin-bottom: 15px">编辑信息</h3>
+            </div>
+            <div class="panel-body">
+                {#                ！！！！！这里要加 method="post"#}
+                <form class="form-horizontal" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Name" value= "{{ tea_obj.teaname }}" name="teachername">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">工号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Teacher ID" value="{{ tea_obj.teaid }}" name="teacherid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">学校</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="School" value="{{ tea_obj.teaschool}}" name="teacherschool">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" placeholder="Password" value="{{ tea_obj.password}}" name="teacherpwd">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+
+                            <button type="submit" class="btn btn-success">修改</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="{% static 'js/code.jquery.com_jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.js' %}"></script>
+
+</body>
+</html>

@@ -39,7 +39,7 @@
         <button type="submit" class="btn btn-default" href="http://127.0.0.1:8000/stuinfo/search/">确定</button>
       </form>
           </li>
-        <li><a href="http://127.0.0.1:8000/stuinfo/">返回原页面</a></li>
+        <li><a href="http://127.0.0.1:8000/stuinfo/">返回上一页面</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -81,21 +81,21 @@
           </tr>
         </thead>
         <tbody>
-
+{% for obj in searchobj %}
                 <tr>
-                <td>{{ searchobj.id }}</td>
-                <td>{{ searchobj.stuname }}</td>
-                <td>{{ searchobj.stuid }}</td>
-                <td>{{ searchobj.stuschool }}</td>
-                <td>{{ searchobj.password }}</td>
-                <td>{{ searchobj.score}}</td>
+                <td>{{ obj.id }}</td>
+                <td>{{ obj.stuname }}</td>
+                <td>{{ obj.stuid }}</td>
+                <td>{{ obj.stuschool }}</td>
+                <td>{{ obj.password }}</td>
+                <td>{{ obj.score}}</td>
                 <td>
-                  <a class="btn btn-primary btn-xs" href="http://127.0.0.1:8000/stuinfo/{{ searchobj.id }}/edit/" >编辑</a>
+                  <a class="btn btn-primary btn-xs" href="http://127.0.0.1:8000/stuinfo/{{ obj.id }}/edit/" >编辑</a>
 
-                  <a class="btn btn-danger btn-xs" href="http://127.0.0.1:8000/stuinfo/delete/?stuid={{ searchobj.id }}">删除</a>
+                  <a class="btn btn-danger btn-xs" href="http://127.0.0.1:8000/stuinfo/delete/?stuid={{ obj.id }}">删除</a>
               </td>
                 </tr>
-
+{% endfor %}
 
         </tbody>
       </table>

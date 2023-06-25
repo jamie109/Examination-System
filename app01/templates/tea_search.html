@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Teacher Info</title>
+    <title>Teacher Search</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
     <style>
         .navbar{
@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">阅卷教师信息管理</a>
+      <a class="navbar-brand" href="#">阅卷教师信息管理：查找教师</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,7 +38,7 @@
         <button type="submit" class="btn btn-default" href="http://127.0.0.1:8000/teainfo/search/">确定</button>
       </form>
           </li>
-        <li><a href="http://127.0.0.1:8000/teainfo/">刷新</a></li>
+        <li><a href="http://127.0.0.1:8000/teainfo/">返回上一页面</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -54,12 +54,12 @@
 <div>
     <div class="container">
         <div style="margin-bottom: 20px">
-            <a class="btn btn-success" href="http://localhost:8000/teainfo/add/">添加教师</a>
+{#            <a class="btn btn-success" href="http://localhost:8000/teainfo/add/">添加教师</a>#}
         </div>
 
         <div class="panel panel-default">
       <!-- Default panel contents -->
-      <div class="panel-heading">英语六级考试阅卷教师信息</div>
+      <div class="panel-heading">阅卷教师信息</div>
 {#      <div class="panel-body">#}
 {##}
 {#        #}
@@ -79,20 +79,22 @@
           </tr>
         </thead>
         <tbody>
-            {% for tea_obj in tea_list %}
+{% for obj in searchobj %}
                 <tr>
-                <td>{{ tea_obj.id }}</td>
-                <td>{{ tea_obj.teaname }}</td>
-                <td>{{ tea_obj.teaid }}</td>
-                <td>{{ tea_obj.teaschool }}</td>
-                <td>{{ tea_obj.password }}</td>
-                <td>
-                  <a class="btn btn-primary btn-xs" href="http://127.0.0.1:8000/teainfo/{{ tea_obj.id }}/edit/" >编辑</a>
+                <td>{{ obj.id }}</td>
+                <td>{{ obj.teaname }}</td>
+                <td>{{ obj.teaid }}</td>
+                <td>{{ obj.teaschool }}</td>
+                <td>{{ obj.password }}</td>
 
-                  <a class="btn btn-danger btn-xs" href="http://127.0.0.1:8000/teainfo/delete/?teaid={{ tea_obj.id }}">删除</a>
+                <td>
+                  <a class="btn btn-primary btn-xs" href="http://127.0.0.1:8000/teainfo/{{ obj.id }}/edit/" >编辑</a>
+
+                  <a class="btn btn-danger btn-xs" href="http://127.0.0.1:8000/teainfo/delete/?teaid={{ obj.id }}">删除</a>
               </td>
+
                 </tr>
-            {% endfor %}
+{% endfor %}
 
         </tbody>
       </table>

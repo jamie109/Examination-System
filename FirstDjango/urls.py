@@ -30,9 +30,14 @@ urlpatterns = [
     #
     # system
     path('stuinfo/', views.stuinfo),
-    path('teainfo/', views.teainfo),
     path('stuinfo/add/', views.stuadd),
     path('stuinfo/delete/', views.studelete),
     path('stuinfo/<int:stuid>/edit/', views.stuedit),
     path('stuinfo/search/', views.stusearch),
+
+    path('teainfo/', views.teainfo),
+    path('teainfo/add/', views.teaadd),
+    path('teainfo/delete/', views.teadelete),
+    path('teainfo/<int:teaid>/edit/', views.teaedit),
+    path('teainfo/search/', views.teasearch),
 ]
