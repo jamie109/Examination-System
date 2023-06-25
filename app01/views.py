@@ -36,21 +36,6 @@ def news(request):
     #return render(request, "news.html")
 
 
-def login(request):
-    if(request.method == "GET"):
-        return render(request, "login.html")
-
-    if(request.method == "POST"):
-        print(request.POST)
-        username = request.POST.get("user")
-        password = request.POST.get("pwd")
-        if username == "wjm" and password == "123":
-            #return HttpResponse("登录成功")
-            return redirect("https://www.baidu.com")
-
-        return render(request, "login.html", {"error_msg":"用户名或密码错误"})
-
-
 def orm(request):
     # 操作表中数据
     ####### 1 新增
@@ -73,17 +58,9 @@ def orm(request):
     #StuInfo.objects.filter(username='s001').update(stuid = '1')
 
     return HttpResponse("success!!!")
-############################################# start ############################################
-"""
-class StuInfo(models.Model):
-    # 学生信息：用户名 学号 学校 密码 得分
-    stuname = models.CharField(max_length=64)
-    stuid = models.CharField(max_length=32)
-    stuschool = models.CharField(max_length=32)
-    password = models.CharField(max_length=64)
-    score = models.IntegerField(null=True, blank=True)
-"""
-
+##################################################################################################
+############################################# start ##############################################
+##################################################################################################
 def stuinfo(request):
     # 数据库中获取学生列表
     stu_list = StuInfo.objects.all()
@@ -108,13 +85,11 @@ def stuadd(request):
     # 添加成功自动跳转
     return redirect("http://127.0.0.1:8000/stuinfo/")
 
-
 def studelete(request):
     """删除学生"""
     stu_id = request.GET.get('stuid')
     StuInfo.objects.filter(id=stu_id).delete()
     return redirect("http://127.0.0.1:8000/stuinfo/")
-
 
 def stuedit(request, stuid):
     """编辑学生信息"""
@@ -136,7 +111,6 @@ def stuedit(request, stuid):
     # 修改成功自动跳转
     return redirect("http://127.0.0.1:8000/stuinfo/")
 
-
 def stusearch(request):
     searchname = request.GET.get("searchname")
     print(searchname)
@@ -147,14 +121,6 @@ def stusearch(request):
 # def stusearchres(request, searchname):
 #     return render(request, "stu_search.html")
 
-"""
-class TeacherInfo(models.Model):
-    # 教师信息：姓名 工号 学校 密码
-    teaname = models.CharField(max_length=64)
-    teaid = models.CharField(max_length=32)
-    teaschool = models.CharField(max_length=32)
-    password = models.CharField(max_length=64)
-"""
 def teainfo(request):
     tea_list = TeacherInfo.objects.all()
     return render(request, "teainfo.html", {"tea_list":tea_list})
@@ -204,3 +170,46 @@ def teasearch(request):
     # print(teacher_obj_search)
     # print(teacher_obj_search.first())
     return render(request, "tea_search.html", {"searchobj":teacher_obj_search})
+
+
+######################################################### 登录 注册
+def login(request):
+    if(request.method == "GET"):
+        return render(request, "login.html")
+
+    if(request.method == "POST"):
+        option = request.POST.get("option")
+        uid = request.POST.get("userid")
+        password = request.POST.get("userpwd")
+        # print(option, uid, password)
+        # print(type(option)) #str
+        # 管理员 只有一个账号
+        if option == "1":
+            if uid == "001" and password == "admin001":
+                return redirect("http://127.0.0.1:8000/admin/")
+            return render(request, "login.html", {"error_msg_pwd": "用户名或密码错误"})
+        elif option == "2": # 教师
+            teacher = TeacherInfo.objects.filter(teaid=uid).first()
+            if teacher is None:
+                return render(request, "login.html", {"error_msg_id": "用户不存在，请先注册"})
+            if password == teacher.password:
+                return redirect("http://127.0.0.1:8000/teacher/")
+            else:
+                return render(request, "login.html", {"error_msg_pwd": "密码错误"})
+        else:# 学生
+            stu = StuInfo.objects.filter(stuid=uid).first()
+            if stu is None:
+                return render(request, "login.html", {"error_msg_id": "用户不存在，请先注册"})
+            if password == stu.password:
+                return redirect("http://127.0.0.1:8000/student/")
+            else:
+                return render(request, "login.html", {"error_msg_pwd": "密码错误"})
+
+        # if username == "wjm" and password == "123":
+        #     #return HttpResponse("登录成功")
+        #     return redirect("https://www.baidu.com")
+        #return render(request, "login.html")
+        #return render(request, "login.html", {"error_msg":"用户名或密码错误"})
+
+def admin(request):
+    return render(request, "admin.html")

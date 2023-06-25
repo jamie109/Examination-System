@@ -1,18 +1,156 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+    <style>
+        .navbar {
+            border-right: 0;
+        }
+
+        .image-container {
+            position: relative;
+        {#width: 400px;#}{#height: 300px;#}
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        {#width: 200px;#}{#height: 150px;#}
+        }
+
+    </style>
 </head>
 <body>
-<h1>用户登录</h1>
-<form method="post" action="/login/">
-    {% csrf_token %}
-    <input type="text" name="user" placeholder="用户名">
-    <input type="password" name="pwd" placeholder="密码">
-    <input type="submit" value="提交">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">英语六级报考系统</a>
+        </div>
 
-    <span style="color: red;">{{ error_msg }}</span>
-</form>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li>
+                    {#              <form class="navbar-form navbar-left" action="http://127.0.0.1:8000/stuinfo/search/" method="GET">#}
+                    {#                  {% csrf_token %}#}
+                    {#        <div class="form-group">#}
+                    {##}
+                    {#          <input type="text" class="form-control" placeholder="输入学生姓名" name="searchname">#}
+                    {#        </div>#}
+                    {#                  <a class="btn btn-primary btn-xs" >确定</a>#}
+                    {#        <button type="submit" class="btn btn-default" href="http://127.0.0.1:8000/stuinfo/search/">确定</button>#}
+                    {#      </form>#}
+                </li>
+                <li><a href="http://127.0.0.1:8000/login/">刷新</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">o(*￣▽￣*)ブ</a></li>
+                {#        <li>#}
+                {#            <a href="http://127.0.0.1:8000/teainfo/">教师信息管理</a>#}
+                {#        </li>#}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+{#<div class="image-container">#}
+<img src="{% static 'img/blank.png' %}" width="60%">
+{#</div>#}
+
+<div>
+    <div class="container" style="width: 44%;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="margin-bottom: 8px">登录</h3>
+            </div>
+            <div class="panel-body">
+                {#                ！！！！！这里要加 method="post"#}
+                <form class="form-horizontal" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+
+                        <label class="col-sm-4 control-label">身份</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="option" id="inlineRadio1" value="1"> 管理员
+                        </label>
+                        <br>
+                         <label class="col-sm-4 control-label"></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="option" id="inlineRadio2" value="2"> 教师
+                        </label>
+                        <br>
+                         <label class="col-sm-4 control-label"></label>
+                        <label class="radio-inline">
+                            <input type="radio" name="option" id="inlineRadio3" value="3"> 学生
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">ID</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" placeholder="User ID" name="userid">
+                        </div>
+                        <span style="color: red;">{{ error_msg_id }}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">密码</label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control" placeholder="Password" name="userpwd">
+                        </div>
+                        <span style="color: red;">{{ error_msg_pwd }}</span>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-5">
+
+                            <button type="submit" class="btn btn-success">登录</button>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+{#                        <label class="col-sm-4 control-label">如果您没有学生账号，请先注册</label>#}
+{#                        <div class="col-sm-5">#}
+{#                            <button type="submit" class="btn btn-success"> 注册 </button>#}
+{#                        </div>#}
+                        <div class="=col-sm-offset-4 col-sm-9 control-label">
+                            如果您还没有学生账户，请先注册：
+                        <a href="/stusignup">注册</a>
+                        </div>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+            {#            <h3  style="margin-bottom: 120px"></h3>#}
+        </div>
+    </div>
+</div>
+
+{#<form method="post" action="/login/">#}
+{#    {% csrf_token %}#}
+{#    <input type="text" name="user" placeholder="用户名">#}
+{#    <input type="password" name="pwd" placeholder="密码">#}
+{#    <input type="submit" value="提交">#}
+{##}
+{#    <span style="color: red;">{{ error_msg }}</span>#}
+{#</form>#}
+<script src="{% static 'js/code.jquery.com_jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.min.js' %}"></script>
 </body>
 </html>

@@ -19,7 +19,6 @@ from django.urls import path
 from app01 import views
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    # path('index/', views.index), # 只要访问index，就会找view的index函数
     # path('user/', views.user),
     #
     # path('user/delete/', views.userdelete),
@@ -28,7 +27,7 @@ urlpatterns = [
     # path('login/', views.login),
     # path('orm/', views.orm),
     #
-    # system
+    ################################ 学生、教师信息管理 增删改查 finish  #############################
     path('stuinfo/', views.stuinfo),
     path('stuinfo/add/', views.stuadd),
     path('stuinfo/delete/', views.studelete),
@@ -40,4 +39,8 @@ urlpatterns = [
     path('teainfo/delete/', views.teadelete),
     path('teainfo/<int:teaid>/edit/', views.teaedit),
     path('teainfo/search/', views.teasearch),
+
+################################ 主页  #############################
+    path('login/', views.login),
+    path('admin/', views.admin),
 ]
