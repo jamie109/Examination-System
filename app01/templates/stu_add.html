@@ -4,18 +4,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>USER ADD</title>
+    <title>Student Add</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.css' %}">
 </head>
 <body>
-<h1> 用户添加</h1>
-<form method="post" action="/user/add/">
+<h1 > 添加学生</h1>
+<form method="post" action="/stuinfo/add/">
     {% csrf_token %}
-    <input type="text" name="studentname" placeholder="studentname">
-    <input type="text" name="studentid" placeholder="student id">
-    <input type="text" name="pwd" placeholder="password">
-{#    <input type="text" name="score" placeholder="score">#}
-    <input type="submit" value="submit">
+    <input type="text" name="studentname" placeholder="学生姓名">
+    <input type="text" name="studentid" placeholder="学号">
+    <input type="text" name="pwd" placeholder="密码">
+    <input type="text" name="school" placeholder="专业">
+    <input type="submit" value="确定">
 </form>
 
 {#<img src="{% static 'img/wallpaper02.png' %}" alt="" width="30%">#}

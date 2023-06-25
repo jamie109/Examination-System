@@ -13,21 +13,6 @@ def user(request):
 
     return render(request, "user.html", {"stu_list":stu_list})
 
-def useradd(request):
-    #return HttpResponse("用户添加")
-    # 会去 app01 templates 目录下找user_add.html文件（根据app的注册顺序逐一找，从第一个app开始，然后app2）
-    if request.method == "GET":
-        return render(request, "user_add.html")
-    # 获取用户提交的数据
-    studentname = request.POST.get("studentname")
-    studentid = request.POST.get("studentid")
-    pwd = request.POST.get("pwd")
-    # score = request.POST.get("score")
-
-    # 添加到数据库
-    StuInfo.objects.create(username=studentname, stuid=studentid, password=pwd)
-    # 添加成功自动跳转
-    return redirect("http://127.0.0.1:8000/user/")
 
 def userdelete(request):
     stu_id = request.GET.get('stuid')
@@ -93,3 +78,36 @@ def orm(request):
     #StuInfo.objects.filter(username='s001').update(stuid = '1')
 
     return HttpResponse("success!!!")
+############################################# start ############################################
+"""class StuInfo(models.Model):
+    # 学生信息：用户名 学号 学校 密码 得分
+    stuname = models.CharField(max_length=64)
+    stuid = models.CharField(max_length=32)
+    stuschool = models.CharField(max_length=32)
+    password = models.CharField(max_length=64)
+    score = models.IntegerField(null=True, blank=True)
+"""
+
+def stuinfo(request):
+    # 数据库中获取学生列表
+    stu_list = StuInfo.objects.all()
+
+    return render(request, "stuinfo.html", {"stu_list": stu_list})
+def stuadd(request):
+    #return HttpResponse("用户添加")
+    # 会去 app01 templates 目录下找user_add.html文件（根据app的注册顺序逐一找，从第一个app开始，然后app2）
+    if request.method == "GET":
+        return render(request, "stu_add.html")
+    # 获取用户提交的数据
+    studentname = request.POST.get("studentname")
+    studentid = request.POST.get("studentid")
+    school = request.POST.get("school")
+    pwd = request.POST.get("pwd")
+    # score = request.POST.get("score")
+    # 添加到数据库
+    StuInfo.objects.create(stuname=studentname, stuid=studentid, stuschool=school, password=pwd)
+    # 添加成功自动跳转
+    return redirect("http://127.0.0.1:8000/stuinfo/")
+
+def teainfo(request):
+    return render(request, "teainfo.html")
