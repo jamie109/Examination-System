@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Add</title>
+    <title>Student Edit</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.css' %}">
     <style>
         .navbar {
@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">英语六级学生信息管理：添加学生</a>
+            <a class="navbar-brand" href="#">英语六级学生信息管理：编辑学生信息</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,7 +40,7 @@
                 {#        <button type="submit" class="btn btn-default" >确定</button>#}
                 {#      </form>#}
                 {#          </li>#}
-                <li><a href="http://127.0.0.1:8000/stuinfo/add/">刷新</a></li>
+                <li><a href="http://127.0.0.1:8000/stuinfo/edit/">刷新</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -57,7 +57,7 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title" style="margin-bottom: 15px">添加学生</h3>
+                <h3 class="panel-title" style="margin-bottom: 15px">编辑学生信息</h3>
             </div>
             <div class="panel-body">
                 {#                ！！！！！这里要加 method="post"#}
@@ -66,31 +66,31 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">姓名</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="Name" name="studentname">
+                            <input type="text" class="form-control" value= "{{ stu_obj.stuname }}" name="studentname">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">学号</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="Student ID" name="studentid">
+                            <input type="text" class="form-control"  value="{{ stu_obj.stuid }}" name="studentid">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">专业</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="Major" name="school">
+                            <input type="text" class="form-control"  value="{{ stu_obj.stuschool }}" name="school">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">密码</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" placeholder="Password" name="pwd">
+                            <input type="password" class="form-control"  value="{{ stu_obj.password}}" name="pwd">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
 
-                            <button type="submit" class="btn btn-success">添加</button>
+                            <button type="submit" class="btn btn-success">修改</button>
                         </div>
                     </div>
                 </form>
@@ -99,17 +99,7 @@
     </div>
 </div>
 
-{#<h1> 添加学生</h1>#}
-{#<form method="post" action="/stuinfo/add/">#}
-{#    {% csrf_token %}#}
-{#    <input type="text" name="studentname" placeholder="学生姓名">#}
-{#    <input type="text" name="studentid" placeholder="学号">#}
-{#    <input type="text" name="pwd" placeholder="密码">#}
-{#    <input type="text" name="school" placeholder="专业">#}
-{#    <input type="submit" value="确定">#}
 {#</form>#}
-
-{#<img src="{% static 'img/wallpaper02.png' %}" alt="" width="30%">#}
 
 <script src="{% static 'js/code.jquery.com_jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.js' %}"></script>

@@ -14,11 +14,6 @@ def user(request):
     return render(request, "user.html", {"stu_list":stu_list})
 
 
-def userdelete(request):
-    stu_id = request.GET.get('stuid')
-    StuInfo.objects.filter(id=stu_id).delete()
-    return redirect("http://127.0.0.1:8000/user/")
-
 def tpl(request):
     name = "wjm"
     roles = ["gu案例元", "vfaigg"]
@@ -79,7 +74,8 @@ def orm(request):
 
     return HttpResponse("success!!!")
 ############################################# start ############################################
-"""class StuInfo(models.Model):
+"""
+class StuInfo(models.Model):
     # 学生信息：用户名 学号 学校 密码 得分
     stuname = models.CharField(max_length=64)
     stuid = models.CharField(max_length=32)
@@ -93,7 +89,9 @@ def stuinfo(request):
     stu_list = StuInfo.objects.all()
 
     return render(request, "stuinfo.html", {"stu_list": stu_list})
+
 def stuadd(request):
+    """  添加学生信息  """
     #return HttpResponse("用户添加")
     # 会去 app01 templates 目录下找user_add.html文件（根据app的注册顺序逐一找，从第一个app开始，然后app2）
     if request.method == "GET":
@@ -103,11 +101,59 @@ def stuadd(request):
     studentid = request.POST.get("studentid")
     school = request.POST.get("school")
     pwd = request.POST.get("pwd")
+    print(studentname,studentid,school,pwd)
     # score = request.POST.get("score")
     # 添加到数据库
     StuInfo.objects.create(stuname=studentname, stuid=studentid, stuschool=school, password=pwd)
     # 添加成功自动跳转
     return redirect("http://127.0.0.1:8000/stuinfo/")
 
+
+def studelete(request):
+    """删除学生"""
+    stu_id = request.GET.get('stuid')
+    StuInfo.objects.filter(id=stu_id).delete()
+    return redirect("http://127.0.0.1:8000/stuinfo/")
+
+
+def stuedit(request, stuid):
+    """编辑学生信息"""
+    if request.method == "GET":
+        stu_obj = StuInfo.objects.filter(id=stuid).first()
+        #print(stu_obj)
+        # oldname = stu_obj.stuname
+        # oldid = stu_obj.stuid
+        # oldschool = stu_obj.stuschool
+        # oldpwd = stu_obj.password
+        return render(request, "stu_edit.html", {"stu_obj": stu_obj})
+
+    # 获取管理员修改后的数据
+    studentname = request.POST.get("studentname")
+    studentid = request.POST.get("studentid")
+    school = request.POST.get("school")
+    pwd = request.POST.get("pwd")
+    StuInfo.objects.filter(id=stuid).update(stuname=studentname, stuid=studentid, stuschool=school, password=pwd)
+    # 修改成功自动跳转
+    return redirect("http://127.0.0.1:8000/stuinfo/")
+
+
+def stusearch(request):
+    searchname = request.GET.get("searchname")
+    print(searchname)
+    stu_obj_search = StuInfo.objects.filter(stuname=searchname).first()
+    print(stu_obj_search)
+    return render(request, "stu_search.html", {"searchobj":stu_obj_search})
+
+# def stusearchres(request, searchname):
+#     return render(request, "stu_search.html")
+
+"""
+class TeacherInfo(models.Model):
+    # 教师信息：姓名 工号 学校 密码
+    teaname = models.CharField(max_length=64)
+    teaid = models.CharField(max_length=32)
+    teaschool = models.CharField(max_length=32)
+    password = models.CharField(max_length=64)
+"""
 def teainfo(request):
     return render(request, "teainfo.html")

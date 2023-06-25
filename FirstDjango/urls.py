@@ -32,4 +32,7 @@ urlpatterns = [
     path('stuinfo/', views.stuinfo),
     path('teainfo/', views.teainfo),
     path('stuinfo/add/', views.stuadd),
+    path('stuinfo/delete/', views.studelete),
+    path('stuinfo/<int:stuid>/edit/', views.stuedit),
+    path('stuinfo/search/', views.stusearch),
 ]
