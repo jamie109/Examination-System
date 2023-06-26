@@ -248,12 +248,22 @@ def showstuinfo(request):
     # StuInfo.objects.filter(stuid=stuid).update(stuname=name, stuschool=stuschool, password=stupwd)
     # print("修改完成")
 
+def pay(request):
+    if request.method == "GET":
+        stuid = request.GET.get("stuid")
+        #print(stuid)
+        return render(request, "pay.html", {"stuid":stuid})
 
 def teapage(request):
     #return render(request, "stu_page.html")
     uid = request.GET.get('teaid')
     return render(request, 'tea_page.html', {'uid': uid})
 
+def showteainfo(request):
+    if request.method == "GET":
+        teaid = request.GET.get('teaid')
+        obj = TeacherInfo.objects.filter(teaid=teaid).first()
+        return render(request, "show_tea_info.html", {"teaid": teaid, "obj": obj})
 
 def adminpage(request):
     return render(request, "admin_page.html")

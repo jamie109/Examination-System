@@ -44,7 +44,11 @@ urlpatterns = [
     path('login/', views.login),
     path('stusignup/', views.stusignup),
     path('adminpage/', views.adminpage),
+################################ student ###########################
     path('stupage/', views.stupage),
-    path('showstuinfo/', views.showstuinfo),
+    path('stupage/showstuinfo/', views.showstuinfo),
+    path('stupage/pay/', views.pay),
+################################ teacher ###########################
     path('teapage/', views.teapage),
+    path('showteainfo/', views.showteainfo),
 ]

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Self Check</title>
+    <title>Teacher Self Check</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.css' %}">
     <style>
         .navbar {
@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">英语六级报考系统：学生查看个人信息</a>
+            <a class="navbar-brand">英语六级报考系统：阅卷教师查看个人信息</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,14 +43,14 @@
                 <li><a></a></li>
                 <li><a></a></li>
 
-                <li><a href="http://127.0.0.1:8000/stupage/showstuinfo/?stuid={{ stuid }}">刷新</a></li>
-                <li><a href="http://127.0.0.1:8000/stupage/?stuid={{ stuid }}">学生主页</a></li>
+                <li><a href="http://127.0.0.1:8000/showteainfo/?teaid={{ teaid }}">刷新</a></li>
+                <li><a href="http://127.0.0.1:8000/teapage/?teaid={{ teaid }}">教师主页</a></li>
                 <li><a href="http://127.0.0.1:8000/login/">退出登录</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <br>
-                <span>你好，学生用户{{ stuid }}！</span>
+                <span>你好，阅卷教师{{ teaid }}！</span>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -66,7 +66,7 @@
 
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading">{{ stuid }}学生信息</div>
+        <div class="panel-heading">{{ teaid }}教师信息</div>
         {#        <div class="panel-body">#}
         {##}
         {#        <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>#}
@@ -82,21 +82,18 @@
             </thead>
             <tbody>
             <tr>
-                <td class="active">学号</td>
-                <td>{{ obj.stuid }}</td>
+                <td class="active">工号</td>
+                <td>{{ obj.teaid }}</td>
             </tr>
             <tr>
                 <td class="success">姓名</td>
-                <td>{{ obj.stuname }}</td>
+                <td>{{ obj.teaname }}</td>
             </tr>
             <tr>
-                <td class="sinfo">专业</td>
-                <td>{{ obj.stuschool }}</td>
+                <td class="sinfo">学校</td>
+                <td>{{ obj.teaschool }}</td>
             </tr>
-            <tr>
-                <td class="danger">得分</td>
-                <td>{{ obj.score }}</td>
-            </tr>
+
             <tr>
                 <td class="warning">登录密码</td>
                 <td>{{ obj.password }}</td>
@@ -108,7 +105,7 @@
     </div>
     <div class="content-2">
         <div>
-            <a href="http://127.0.0.1:8000/stupage/?stuid={{ stuid }}" class="btn btn-primary">返回主页</a>
+            <a href="http://127.0.0.1:8000/teapage/?teaid={{ teaid }}" class="btn btn-primary">返回主页</a>
         </div>
     </div>
 
