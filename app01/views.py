@@ -235,6 +235,20 @@ def stupage(request):
     uid = request.GET.get('stuid')
     return render(request, 'stu_page.html', {'uid': uid})
 
+def showstuinfo(request):
+    if request.method == "GET":
+        stuid = request.GET.get('stuid')
+        obj = StuInfo.objects.filter(stuid=stuid).first()
+        return render(request, "show_stu_info.html", {"stuid": stuid, "obj": obj})
+    # print("ok")
+    # name = request.POST.get("stuname")
+    # # stuid = request.POST.get("stuid")# 学号不能改
+    # stuschool = request.POST.get("stuschool")
+    # stupwd = request.POST.get("stupwd")
+    # StuInfo.objects.filter(stuid=stuid).update(stuname=name, stuschool=stuschool, password=stupwd)
+    # print("修改完成")
+
+
 def teapage(request):
     #return render(request, "stu_page.html")
     uid = request.GET.get('teaid')

@@ -45,5 +45,6 @@ urlpatterns = [
     path('stusignup/', views.stusignup),
     path('adminpage/', views.adminpage),
     path('stupage/', views.stupage),
+    path('showstuinfo/', views.showstuinfo),
     path('teapage/', views.teapage),
 ]

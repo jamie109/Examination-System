@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Self Check</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.css' %}">
+    <style>
+        .navbar {
+            border-right: 0;
+        }
+
+        .content-1 {
+            width: 80%; /* 空白区域的宽度 */
+            margin: 0 auto; /* 水平居中 */
+            padding-top: 90px; /* 上方留白的高度 */
+        }
+
+        .content-2 {
+            padding-top: 20px; /* 上方留白的高度 */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">英语六级报考系统：学生查看个人信息</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a></a></li>
+                <li><a></a></li>
+
+                <li><a href="http://127.0.0.1:8000/showstuinfo/?stuid={{ stuid }}">刷新</a></li>
+                <li><a href="http://127.0.0.1:8000/stupage/?stuid={{ stuid }}">学生主页</a></li>
+                <li><a href="http://127.0.0.1:8000/login/">退出登录</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <br>
+                <span>你好，学生用户{{ stuid }}！</span>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="content-1">
+</div>
+
+<div class="container" style="width: 40%;">
+    <div style="margin-bottom: 20px">
+        {#            <a class="btn btn-success" href="http://localhost:8000/stuinfo/add/">添加学生</a>#}
+    </div>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">{{ stuid }}学生信息</div>
+        {#        <div class="panel-body">#}
+        {##}
+        {#        <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>#}
+        {#        </div >#}
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="active">学号</td>
+                <td>{{ obj.stuid }}</td>
+            </tr>
+            <tr>
+                <td class="success">姓名</td>
+                <td>{{ obj.stuname }}</td>
+            </tr>
+            <tr>
+                <td class="sinfo">专业</td>
+                <td>{{ obj.stuschool }}</td>
+            </tr>
+            <tr>
+                <td class="danger">得分</td>
+                <td>{{ obj.score }}</td>
+            </tr>
+            <tr>
+                <td class="warning">登录密码</td>
+                <td>{{ obj.password }}</td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+    <div class="content-2">
+        <div>
+            <a href="http://127.0.0.1:8000/stupage/?stuid={{ stuid }}" class="btn btn-primary">返回主页</a>
+        </div>
+    </div>
+
+</div>
+
+<script src="{% static 'js/code.jquery.com_jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.js' %}"></script>
+
+</body>
+</html>
