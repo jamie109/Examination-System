@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Page</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.css' %}">
+    <style>
+        .navbar {
+            border-right: 0;
+        }
+        .content-1 {
+        width: 80%; /* 空白区域的宽度 */
+        margin: 0 auto; /* 水平居中 */
+        padding-top: 70px; /* 上方留白的高度 */
+    }
+        .content-2 {
+        width: 80%; /* 空白区域的宽度 */
+        margin: 0 auto; /* 水平居中 */
+        padding-top: 50px; /* 上方留白的高度 */
+    }
+        .custom-btn {
+            height: 150px; /* 自定义按钮的高度 */
+        }
+        .custom-btn-1 {
+        background-color: #91cb7b; /* 自定义按钮1的背景颜色 */
+        color: #ffffff; /* 自定义按钮1的文本颜色 */
+    }
+
+        .custom-btn-2 {
+        background-color: #d5c3fb; /* 自定义按钮2的背景颜色 */
+        color: #ffffff; /* 自定义按钮2的文本颜色 */
+    }
+
+        .custom-btn-3 {
+        background-color: #53a9d4; /* 自定义按钮3的背景颜色 */
+        color: #ffffff; /* 自定义按钮3的文本颜色 */
+    }
+        .custom-btn-4 {
+        background-color: #ffce19; /* 自定义按钮1的背景颜色 */
+        color: #ffffff; /* 自定义按钮1的文本颜色 */
+    }
+
+        .custom-btn-5 {
+        background-color: #db5860; /* 自定义按钮2的背景颜色 */
+        color: #ffffff; /* 自定义按钮2的文本颜色 */
+    }
+
+        .custom-btn-6 {
+        background-color: #ff7d23; /* 自定义按钮3的背景颜色 */
+        color: #ffffff; /* 自定义按钮3的文本颜色 */
+    }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">英语六级报考系统：管理员主页</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a></a></li>
+                <li><a></a></li>
+                {#          <li>#}
+                {#              <form class="navbar-form navbar-left">#}
+                {#        <div class="form-group">#}
+                {#          <input type="text" class="form-control" placeholder="输入学生姓名">#}
+                {#        </div>#}
+                {#        <button type="submit" class="btn btn-default" >确定</button>#}
+                {#      </form>#}
+                {#          </li>#}
+                <li><a href="http://127.0.0.1:8000/adminpage/">刷新</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <br>
+                <span>你好，管理员用户！</span>
+                {#        <li>#}
+                {#            <a href="http://127.0.0.1:8000/teainfo/">教师信息管理</a>#}
+                {#        </li>#}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<p>学生ID: {{ uid }}</p>
+
+<div class="content-1">
+    <!-- 这里是空白区域的内容 -->
+</div>
+
+<div class="container" style="width: 84%;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="margin-bottom: 15px">管理员业务</h3>
+        </div>
+        <div class="panel-body">
+            {#                ！！！！！这里要加 method="post"#}
+            <form class="form-horizontal" method="post">
+                {% csrf_token %}
+                <div class="content-2">
+                    <!-- 这里是空白区域的内容 -->
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-1"
+                                onclick="window.location.href='http://127.0.0.1:8000/stuinfo/';">学生信息管理
+                        </button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-2"
+                                onclick="window.location.href='http://127.0.0.1:8000/teainfo/';">教师信息管理
+                        </button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-3"
+                                onclick="window.location.href='#';">查看报名信息
+                        </button>
+                    </div>
+                </div>
+                <div class="content-2">
+                    <!-- 这里是空白区域的内容 -->
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-4"
+                                onclick="window.location.href='#';">查看试卷
+                        </button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-5"
+                                onclick="window.location.href='#';">上传试卷
+                        </button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-6"
+                                onclick="window.location.href='#';">考试管理
+                        </button>
+                    </div>
+                </div>
+                <div class="content-2">
+                    <!-- 这里是空白区域的内容 -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/code.jquery.com_jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.js' %}"></script>
+
+</body>
+</html>

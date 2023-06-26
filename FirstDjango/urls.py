@@ -44,4 +44,6 @@ urlpatterns = [
     path('login/', views.login),
     path('stusignup/', views.stusignup),
     path('adminpage/', views.adminpage),
+    path('stupage/', views.stupage),
+    path('teapage/', views.teapage),
 ]

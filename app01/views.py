@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from app01.models import StuInfo, TeacherInfo
 # Create your views here.
 # URL 与函数的对应关系
@@ -193,7 +193,7 @@ def login(request):
             if teacher is None:
                 return render(request, "login.html", {"error_msg_id": "用户不存在，请先注册"})
             if password == teacher.password:
-                return redirect("http://127.0.0.1:8000/teacher/")
+                return redirect("http://127.0.0.1:8000/teacher/?teaid={uid}")
             else:
                 return render(request, "login.html", {"error_msg_pwd": "密码错误"})
         else:# 学生
@@ -201,7 +201,8 @@ def login(request):
             if stu is None:
                 return render(request, "login.html", {"error_msg_id": "用户不存在，请先注册"})
             if password == stu.password:
-                return redirect("http://127.0.0.1:8000/student/")
+                return HttpResponseRedirect(f"http://127.0.0.1:8000/stupage/?stuid={uid}")
+                #return redirect("http://127.0.0.1:8000/student/")
             else:
                 return render(request, "login.html", {"error_msg_pwd": "密码错误"})
 
@@ -228,6 +229,17 @@ def stusignup(request):
     StuInfo.objects.create(stuname=studentname, stuid=studentid, stuschool=school, password=pwd)
     # 添加成功自动跳转
     return render(request, "stu_signup.html", {"ok_msg":"        注册成功，请点击下方连接返回登录页面！"})
+
+def stupage(request):
+    #return render(request, "stu_page.html")
+    uid = request.GET.get('stuid')
+    return render(request, 'stu_page.html', {'uid': uid})
+
+def teapage(request):
+    #return render(request, "stu_page.html")
+    uid = request.GET.get('teaid')
+    return render(request, 'tea_page.html', {'uid': uid})
+
 
 def adminpage(request):
     return render(request, "admin_page.html")
