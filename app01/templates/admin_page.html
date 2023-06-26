@@ -47,7 +47,7 @@
     }
 
         .custom-btn-6 {
-        background-color: #ff7d23; /* 自定义按钮3的背景颜色 */
+        background-color: #ff7d93; /* 自定义按钮3的背景颜色 */
         color: #ffffff; /* 自定义按钮3的文本颜色 */
     }
     </style>
@@ -81,6 +81,7 @@
                 {#      </form>#}
                 {#          </li>#}
                 <li><a href="http://127.0.0.1:8000/adminpage/">刷新</a></li>
+                <li><a href="http://127.0.0.1:8000/login/">退出登录</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -111,41 +112,41 @@
                     <!-- 这里是空白区域的内容 -->
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-4">
+                    <div class="col-sm-offset-1 col-sm-4">
                         <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-1"
                                 onclick="window.location.href='http://127.0.0.1:8000/stuinfo/';">学生信息管理
                         </button>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-offset-2 col-sm-4">
                         <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-2"
                                 onclick="window.location.href='http://127.0.0.1:8000/teainfo/';">教师信息管理
                         </button>
                     </div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-3"
-                                onclick="window.location.href='#';">查看报名信息
-                        </button>
-                    </div>
+{#                    <div class="col-sm-4">#}
+{#                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-3"#}
+{#                                onclick="window.location.href='#';">查看报名信息#}
+{#                        </button>#}
+{#                    </div>#}
                 </div>
                 <div class="content-2">
                     <!-- 这里是空白区域的内容 -->
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-4"
+                    <div class="col-sm-offset-1 col-sm-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-3"
+                                onclick="window.location.href='#';">上传试题
+                        </button>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-6"
                                 onclick="window.location.href='#';">查看试卷
                         </button>
                     </div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-5"
-                                onclick="window.location.href='#';">上传试卷
-                        </button>
-                    </div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-6"
-                                onclick="window.location.href='#';">考试管理
-                        </button>
-                    </div>
+{#                    <div class="col-sm-4">#}
+{#                        <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-6"#}
+{#                                onclick="window.location.href='#';">考试管理#}
+{#                        </button>#}
+{#                    </div>#}
                 </div>
                 <div class="content-2">
                     <!-- 这里是空白区域的内容 -->
