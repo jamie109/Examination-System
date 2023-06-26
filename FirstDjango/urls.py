@@ -42,5 +42,6 @@ urlpatterns = [
 
 ################################ 主页  #############################
     path('login/', views.login),
-    path('admin/', views.admin),
+    path('stusignup/', views.stusignup),
+    path('adminpage/', views.adminpage),
 ]

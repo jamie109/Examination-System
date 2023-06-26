@@ -186,7 +186,7 @@ def login(request):
         # 管理员 只有一个账号
         if option == "1":
             if uid == "001" and password == "admin001":
-                return redirect("http://127.0.0.1:8000/admin/")
+                return redirect("http://127.0.0.1:8000/adminpage/")
             return render(request, "login.html", {"error_msg_pwd": "用户名或密码错误"})
         elif option == "2": # 教师
             teacher = TeacherInfo.objects.filter(teaid=uid).first()
@@ -211,5 +211,23 @@ def login(request):
         #return render(request, "login.html")
         #return render(request, "login.html", {"error_msg":"用户名或密码错误"})
 
-def admin(request):
-    return render(request, "admin.html")
+"""
+TODO:增加验证，保证输入的学号不能与数据库中有重复
+"""
+def stusignup(request):
+    if request.method == "GET":
+        return render(request, "stu_signup.html")
+    # 获取用户提交的数据
+    studentname = request.POST.get("studentname")
+    studentid = request.POST.get("studentid")
+    school = request.POST.get("school")
+    pwd = request.POST.get("pwd")
+    print(studentname,studentid,school,pwd)
+
+    # 添加到数据库
+    StuInfo.objects.create(stuname=studentname, stuid=studentid, stuschool=school, password=pwd)
+    # 添加成功自动跳转
+    return render(request, "stu_signup.html", {"ok_msg":"        注册成功，请点击下方连接返回登录页面！"})
+
+def adminpage(request):
+    return render(request, "admin_page.html")
