@@ -193,7 +193,7 @@ def login(request):
             if teacher is None:
                 return render(request, "login.html", {"error_msg_id": "用户不存在，请先注册"})
             if password == teacher.password:
-                return redirect("http://127.0.0.1:8000/teacher/?teaid={uid}")
+                return HttpResponseRedirect(f"http://127.0.0.1:8000/teapage/?teaid={uid}")
             else:
                 return render(request, "login.html", {"error_msg_pwd": "密码错误"})
         else:# 学生
