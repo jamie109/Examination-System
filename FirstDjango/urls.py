@@ -52,6 +52,7 @@ urlpatterns = [
     path('stupage/showstuinfo/', views.showstuinfo),
     path('stupage/pay/', views.pay),
     path('stupage/<int:stuid>/exam/', views.exam),
+    path('stupage/<int:stuid>/score/', views.stuscore),
 ################################ teacher ###########################
     path('teapage/', views.teapage),
     path('showteainfo/', views.showteainfo),

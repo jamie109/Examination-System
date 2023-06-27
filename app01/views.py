@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from app01.models import StuInfo, TeacherInfo, Exam, QuestionOption, EssayQuestion, AnsOptionQ, AnsEssayQ
+from django.db import models
 # Create your views here.
 # URL 与函数的对应关系
 
@@ -364,3 +365,16 @@ def teascorepaper(request,teaid):
         return HttpResponseRedirect(f"http://127.0.0.1:8000/teapage/?teaid={teaid}")
 
     return render(request, "tea_score_paper.html",{"teaid":teaid, "EssAnswers":EssAnswers})
+
+def stuscore(request,stuid):
+    student = StuInfo.objects.filter(stuid=stuid).first()
+    # 单选题
+    OptAnswers = AnsOptionQ.objects.filter(stuid=student)
+    opt_score_total = OptAnswers.aggregate(total_score=models.Sum('score')).get('total_score', 0)
+    # 主观题
+    EssAnswers = AnsEssayQ.objects.filter(stuid=student)
+    ess_score_total = EssAnswers.aggregate(total_score=models.Sum('score')).get('total_score', 0)
+
+    all_score = opt_score_total + ess_score_total
+    return render(request,"stu_score.html",{"stuid":stuid, "opt_score_total":opt_score_total, "ess_score_total":ess_score_total,
+                                            "Opts":OptAnswers,"Esss":EssAnswers, "all_score":all_score})
