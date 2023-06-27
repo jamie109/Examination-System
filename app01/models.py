@@ -41,6 +41,19 @@ class EssayQuestion(models.Model):
     question_text = models.TextField()
     answer_text = models.TextField()
 
+######### 考生答题和得分
+class AnsOptionQ(models.Model):
+    stuid = models.ForeignKey(StuInfo, on_delete=models.CASCADE)
+    optQid = models.ForeignKey(QuestionOption, on_delete=models.CASCADE)
+    stuAns = models.CharField(null=True, max_length=1)  # 考生选择的答案
+    score = models.IntegerField(null=True, blank=True) #考生本题得分
+
+class AnsEssayQ(models.Model):
+    stuid = models.ForeignKey(StuInfo, on_delete=models.CASCADE)
+    essQid = models.ForeignKey(EssayQuestion, on_delete=models.CASCADE)
+    stuAns = models.TextField() #考生答案
+    score = models.IntegerField(null=True, blank=True)  # 考生本题得分
+
 # class Answer(models.Model):
 #     stuid = StuInfo.stuid
 

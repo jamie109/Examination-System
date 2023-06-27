@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>View Paper</title>
+    <title>Exam</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.css' %}">
     <style>
         .navbar {
@@ -28,7 +28,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">英语六级报考系统：{{ user }}查看试卷</a>
+            <a class="navbar-brand">英语六级报考系统：{{ stuid }}考试</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,13 +37,13 @@
                 <li><a></a></li>
                 <li><a></a></li>
 
-{#                <li><a href="http://127.0.0.1:8000/adminpage/viewpaper/">刷新</a></li>#}
-{#                <li><a href="http://127.0.0.1:8000/adminpage/">返回</a></li>#}
+                <li><a href="http://127.0.0.1:8000/stupage/{{ stuid }}/exam/">刷新</a></li>
+                <li><a href="http://127.0.0.1:8000/stupage/?stuid={{ stuid }}">返回学生主页</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <br>
-                <span>你好，{{ user }}！</span>
+                <span>你好，考生{{ stuid }}！</span>
 
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -54,11 +54,11 @@
 <div class="container" style="width: 84%;">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title" style="margin-bottom: 10px">试题及答案</h3>
+            <h3 class="panel-title" style="margin-bottom: 10px">试题</h3>
         </div>
         <div class="panel-body">
             {#                ！！！！！这里要加 method="post"#}
-            <form class="form-horizontal" action="http://127.0.0.1:8000/adminpage/uploadpaper/" method="post">
+            <form class="form-horizontal" method="post">
                 {% csrf_token %}
                 {#                <div class="content-2">#}
                 {#                    <!-- 这里是空白区域的内容 -->#}
@@ -96,10 +96,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">正确选项：{{ optQ.correct_answer }} </label>
-                        {#                        <div class="col-sm-6">#}
-                        {#                            <p class="form-control-static"></p>#}
-                        {#                        </div>#}
+                        <label class="col-sm-2 control-label">选择答案：</label>
+                        <div class="col-sm-10">
+                            <input type="radio" name="opt_answer{{ forloop.counter }}" value="A"> A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="opt_answer{{ forloop.counter }}" value="B"> B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="opt_answer{{ forloop.counter }}" value="C"> C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
                     </div>
                     <hr>
                 {% endfor %}
@@ -115,15 +117,21 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-1 control-label">答案:</label>
-                        <div class="col-sm-11">
-                            <p class="form-control-static">{{ essQ.answer_text }}</p>
+                        <label class="col-sm-1 control-label">考生答题:</label>
+                        <div class="col-sm-10">
+                            <textarea name="stu_essay_answer{{ forloop.counter }}"
+                                      style="width: 800px; height: 70px;"></textarea>
                         </div>
                     </div>
                     <hr>
 
                 {% endfor %}
 
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" value="Upload">交卷</button>
+                    </div>
+                </div>
             </form>
 
         </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
-from app01.models import StuInfo, TeacherInfo, Exam, QuestionOption, EssayQuestion
+from app01.models import StuInfo, TeacherInfo, Exam, QuestionOption, EssayQuestion, AnsOptionQ, AnsEssayQ
 # Create your views here.
 # URL 与函数的对应关系
 
@@ -212,9 +212,7 @@ def login(request):
         #return render(request, "login.html")
         #return render(request, "login.html", {"error_msg":"用户名或密码错误"})
 
-"""
-TODO:增加验证，保证输入的学号不能与数据库中有重复
-"""
+# TODO:增加验证，保证输入的学号不能与数据库中有重复
 def stusignup(request):
     if request.method == "GET":
         return render(request, "stu_signup.html")
@@ -297,6 +295,7 @@ def uploadpaper(request):
 
     return render(request, "upload_paper.html")
 
+# finishTODO:管理员、教师查看试卷，选择题正确选项显示123而不是ABC
 def viewpaper(request):
     # exam = Exam.objects.get(id=exam_id)
     exam = Exam.objects.get(examtitle="exam1")
@@ -306,5 +305,50 @@ def viewpaper(request):
         'exam': exam,
         'questions': questions
     }
-    return render(request, 'view_paper.html', {'exam': exam, 'questions': questions, 'essay_questions':essay_questions
+    return render(request, 'view_paper.html', {'user':"管理员",'exam': exam, 'questions': questions, 'essay_questions':essay_questions
                                                ,'index_map':{'0': 'A', 1: 'B','2': 'C'}})
+
+def teaviewpaper(request):
+    # exam = Exam.objects.get(id=exam_id)
+    exam = Exam.objects.get(examtitle="exam1")
+    questions = QuestionOption.objects.filter(exam=exam)
+    essay_questions = EssayQuestion.objects.filter(exam=exam)
+    context = {
+        'exam': exam,
+        'questions': questions
+    }
+    return render(request, 'view_paper.html', {'user':"教师用户",'exam': exam, 'questions': questions, 'essay_questions':essay_questions
+                                               ,'index_map':{'0': 'A', 1: 'B','2': 'C'}})
+
+def exam(request,stuid):
+    # if request.method == "GET":
+    # stuid = request.GET.get("stuid")
+        #print(stuid)
+    student = StuInfo.objects.filter(stuid=stuid).first()
+    exam = Exam.objects.get(examtitle="exam1")
+    questions = QuestionOption.objects.filter(exam=exam)
+    essay_questions = EssayQuestion.objects.filter(exam=exam)
+    if request.method == "POST":
+        for count, optQ in enumerate(questions):
+            optQid = optQ.id
+            ############ 需要加一，html循环索引从1开始
+            optAns = request.POST.get("opt_answer"+str(count+1))
+            # 选择题自动计分
+            if optQ.is_correct(optAns):
+                score = 5
+            else:
+                score = 0
+            print(student, optAns, score)
+            AnsOptionQ.objects.create(stuid=student, optQid=optQ, stuAns=optAns, score=score)
+
+        for count, essQ in enumerate(essay_questions):
+            essQid = essQ.id
+            essAnswer = request.POST.get("stu_essay_answer"+str(count+1))
+            print(essQid, essAnswer)
+            AnsEssayQ.objects.create(stuid=student, essQid=essQ, stuAns=essAnswer)
+            print(student,essQ,essAnswer)
+        #return HttpResponseRedirect(f"http://127.0.0.1:8000/stupage/?stuid={stuid}")
+
+
+    return render(request, "exam.html", {"stuid":stuid,'exam': exam, 'questions': questions, 'essay_questions':essay_questions})
+
