@@ -267,3 +267,9 @@ def showteainfo(request):
 
 def adminpage(request):
     return render(request, "admin_page.html")
+
+def uploadpaper(request):
+    return render(request, "upload_paper.html")
+
+def checkpaper(request):
+    return render(request, "check_paper.html")

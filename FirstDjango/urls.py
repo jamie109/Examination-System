@@ -44,6 +44,8 @@ urlpatterns = [
     path('login/', views.login),
     path('stusignup/', views.stusignup),
     path('adminpage/', views.adminpage),
+    path('adminpage/uploadpaper/', views.uploadpaper),
+    path('adminpage/checkpaper/', views.checkpaper),
 ################################ student ###########################
     path('stupage/', views.stupage),
     path('stupage/showstuinfo/', views.showstuinfo),
