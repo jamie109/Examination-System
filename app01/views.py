@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
-from app01.models import StuInfo, TeacherInfo
+from app01.models import StuInfo, TeacherInfo, Exam, QuestionOption
 # Create your views here.
 # URL 与函数的对应关系
 
@@ -269,7 +269,13 @@ def adminpage(request):
     return render(request, "admin_page.html")
 
 def uploadpaper(request):
-    return render(request, "upload_paper.html")
+    if request.method == "GET":
+        return render(request, "upload_paper.html")
+    myexam = Exam.objects.create(title='Exam1')
+    question = QuestionOption.objects.create(exam=myexam, content='Question 1 content', options=['A', 'B', 'C'], answer='A')
+    # 创建其他题目的实例，以此类推
+    options = question.get_options()
+    return render(request, "upload_paper.html", {'question': question, 'options': options})
 
 def checkpaper(request):
     return render(request, "check_paper.html")

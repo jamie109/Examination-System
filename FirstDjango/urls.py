@@ -42,11 +42,12 @@ urlpatterns = [
 
 ################################ 主页  #############################
     path('login/', views.login),
-    path('stusignup/', views.stusignup),
+################################ admin ###########################
     path('adminpage/', views.adminpage),
     path('adminpage/uploadpaper/', views.uploadpaper),
     path('adminpage/checkpaper/', views.checkpaper),
 ################################ student ###########################
+    path('stusignup/', views.stusignup),
     path('stupage/', views.stupage),
     path('stupage/showstuinfo/', views.showstuinfo),
     path('stupage/pay/', views.pay),
