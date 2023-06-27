@@ -344,11 +344,12 @@ def exam(request,stuid):
         for count, essQ in enumerate(essay_questions):
             essQid = essQ.id
             essAnswer = request.POST.get("stu_essay_answer"+str(count+1))
-            print(essQid, essAnswer)
+            #print(essQid, essAnswer)
             AnsEssayQ.objects.create(stuid=student, essQid=essQ, stuAns=essAnswer)
             print(student,essQ,essAnswer)
-        #return HttpResponseRedirect(f"http://127.0.0.1:8000/stupage/?stuid={stuid}")
-
+        return HttpResponseRedirect(f"http://127.0.0.1:8000/stupage/?stuid={stuid}")
 
     return render(request, "exam.html", {"stuid":stuid,'exam': exam, 'questions': questions, 'essay_questions':essay_questions})
 
+def teascorepaper(request,teaid):
+    return render(request, "tea_score_paper.html",{"teaid":teaid})
