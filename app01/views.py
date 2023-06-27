@@ -352,9 +352,23 @@ def exam(request,stuid):
 
     return render(request, "exam.html", {"stuid":stuid,'exam': exam, 'questions': questions, 'essay_questions':essay_questions})
 
-def teascorepaper(request,teaid):
-    stuid = "1001"
+def teatoscore(request,teaid):
+    # 学生对象的索引
+    stus_ids = AnsEssayQ.objects.values('stuid').distinct()
+    stus = []
+    for item in stus_ids:
+        # 后面要加first才能获取数据对象！！！
+        student = StuInfo.objects.filter(id=item['stuid']).first()
+        stus.append(student)
+    # print(stus)
+    return render(request,"tea_to_score.html",{"teaid":teaid, "students":stus})
+
+def teascorepaper(request,teaid,stuid):
+    # stuid = "1001"
     student = StuInfo.objects.filter(stuid=stuid).first()
+    OptAnswers = AnsOptionQ.objects.filter(stuid=student)
+    opt_score_total = OptAnswers.aggregate(total_score=models.Sum('score')).get('total_score', 0)
+
     EssAnswers = AnsEssayQ.objects.filter(stuid=student)
     if request.method == "POST":
         for count, obj in enumerate(EssAnswers):
@@ -362,9 +376,12 @@ def teascorepaper(request,teaid):
             print(obj.stuAns, score1)
             obj.score = score1
             obj.save()
-        return HttpResponseRedirect(f"http://127.0.0.1:8000/teapage/?teaid={teaid}")
+        ess_score_total = EssAnswers.aggregate(total_score=models.Sum('score')).get('total_score', 0)
+        student.score = opt_score_total + ess_score_total
+        student.save()
+        return HttpResponseRedirect(f"http://127.0.0.1:8000/teapage/{teaid}/scorepaper/")
 
-    return render(request, "tea_score_paper.html",{"teaid":teaid, "EssAnswers":EssAnswers})
+    return render(request, "tea_score_paper.html",{"teaid":teaid, "stuid":stuid,"EssAnswers":EssAnswers})
 
 def stuscore(request,stuid):
     student = StuInfo.objects.filter(stuid=stuid).first()
@@ -374,7 +391,9 @@ def stuscore(request,stuid):
     # 主观题
     EssAnswers = AnsEssayQ.objects.filter(stuid=student)
     ess_score_total = EssAnswers.aggregate(total_score=models.Sum('score')).get('total_score', 0)
-
-    all_score = opt_score_total + ess_score_total
+    all_score = student.score
+    # all_score = opt_score_total + ess_score_total
+    # student.score = all_score
+    # student.save()
     return render(request,"stu_score.html",{"stuid":stuid, "opt_score_total":opt_score_total, "ess_score_total":ess_score_total,
                                             "Opts":OptAnswers,"Esss":EssAnswers, "all_score":all_score})

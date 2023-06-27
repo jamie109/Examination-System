@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scoring</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.css' %}">
+    <style>
+        .navbar {
+            border-right: 0;
+        }
+
+        .bg-info {
+            font-size: 18px; /* 调整文字大小 */
+            text-align: center; /* 文字居中显示 */
+        }
+
+        .custom-btn-1 {
+            background-color: #91cbbb; /* 自定义按钮1的背景颜色 */
+            color: #ffffff; /* 自定义按钮1的文本颜色 */
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">英语六级报考系统：教师阅卷</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a></a></li>
+                <li><a></a></li>
+
+                <li><a href="http://127.0.0.1:8000/teapage/{{ teaid }}/scorepaper/">刷新</a></li>
+                <li><a href="http://127.0.0.1:8000/teapage/?teaid={{ teaid }}">返回教师主页</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <br>
+                <span>你好，教师{{ teaid }}！</span>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+{#<h1>管理员查看试卷</h1>#}
+<div class="container" style="width: 84%;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="margin-bottom: 10px">试题</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>试卷序号</th>
+                    <th>阅卷情况</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in students %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            {% if obj.score is None %}
+                                <p>未阅</p>
+                            {% else %}
+                                <p>已阅</p>
+                            {% endif %}
+
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary custom-btn custom-btn-1"
+                                    onclick="window.location.href='http://127.0.0.1:8000/teapage/{{ teaid }}/scorepaper/{{ obj.stuid }}';">
+                                评分或调整分数
+                            </button>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
