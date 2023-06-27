@@ -45,7 +45,7 @@ urlpatterns = [
 ################################ admin ###########################
     path('adminpage/', views.adminpage),
     path('adminpage/uploadpaper/', views.uploadpaper),
-    path('adminpage/checkpaper/', views.checkpaper),
+    path('adminpage/viewpaper/', views.viewpaper),
 ################################ student ###########################
     path('stusignup/', views.stusignup),
     path('stupage/', views.stupage),
