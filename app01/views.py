@@ -352,4 +352,15 @@ def exam(request,stuid):
     return render(request, "exam.html", {"stuid":stuid,'exam': exam, 'questions': questions, 'essay_questions':essay_questions})
 
 def teascorepaper(request,teaid):
-    return render(request, "tea_score_paper.html",{"teaid":teaid})
+    stuid = "1001"
+    student = StuInfo.objects.filter(stuid=stuid).first()
+    EssAnswers = AnsEssayQ.objects.filter(stuid=student)
+    if request.method == "POST":
+        for count, obj in enumerate(EssAnswers):
+            score1 = request.POST.get("Q"+str(count+1)+"score")
+            print(obj.stuAns, score1)
+            obj.score = score1
+            obj.save()
+        return HttpResponseRedirect(f"http://127.0.0.1:8000/teapage/?teaid={teaid}")
+
+    return render(request, "tea_score_paper.html",{"teaid":teaid, "EssAnswers":EssAnswers})
