@@ -269,13 +269,31 @@ def adminpage(request):
     return render(request, "admin_page.html")
 
 def uploadpaper(request):
-    if request.method == "GET":
-        return render(request, "upload_paper.html")
-    myexam = Exam.objects.create(title='Exam1')
-    question = QuestionOption.objects.create(exam=myexam, content='Question 1 content', options=['A', 'B', 'C'], answer='A')
-    # 创建其他题目的实例，以此类推
-    options = question.get_options()
-    return render(request, "upload_paper.html", {'question': question, 'options': options})
+    if request.method == "POST":
+        # return render(request, "upload_paper.html")
+        exam_title = request.POST.get("exam_title")
+        question_content = request.POST.get("question_content")
+        options = request.POST.getlist('option')  # 获取所有选项的值
+        correct_answer = request.POST.get("correct_answer")
+        # 创建或获取试卷
+        exam, _ = Exam.objects.get_or_create(examtitle=exam_title)
+        # 创建问题选项
+        QuestionOption.objects.create(
+            exam=exam,
+            content=question_content,
+            options=options,
+            correct_answer=correct_answer
+        )
+        # 处理上传成功的情况，可以跳转到相应页面或显示成功信息
+        return render(request, "upload_paper.html", {"ok_msg":"upload ok"})
+    return render(request, "upload_paper.html")
 
-def checkpaper(request):
-    return render(request, "check_paper.html")
+def viewpaper(request):
+    # exam = Exam.objects.get(id=exam_id)
+    exam = Exam.objects.get(examtitle="exam1")
+    questions = QuestionOption.objects.filter(exam=exam)
+    context = {
+        'exam': exam,
+        'questions': questions
+    }
+    return render(request, 'view_paper.html', {'exam': exam, 'questions': questions})
