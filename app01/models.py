@@ -22,7 +22,7 @@ class TeacherInfo(models.Model):
 ####################################### 试卷 #####################################
 class Exam(models.Model):
     examtitle = models.CharField(max_length=64)
-
+# 选择题
 class QuestionOption(models.Model):
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
     content = models.TextField()
@@ -35,8 +35,14 @@ class QuestionOption(models.Model):
     def is_correct(self, answer):
         return answer == self.correct_answer
 
-class Answer(models.Model):
-    stuid = StuInfo.stuid
+# 主观题
+class EssayQuestion(models.Model):
+    exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
+    question_text = models.TextField()
+    answer_text = models.TextField()
+
+# class Answer(models.Model):
+#     stuid = StuInfo.stuid
 
 ##### 新增数据，不在这里添加
 #TeacherInfo.objects.create(teacherid='t001', password='t001')

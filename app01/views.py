@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
-from app01.models import StuInfo, TeacherInfo, Exam, QuestionOption
+from app01.models import StuInfo, TeacherInfo, Exam, QuestionOption, EssayQuestion
 # Create your views here.
 # URL 与函数的对应关系
 
@@ -272,28 +272,38 @@ def uploadpaper(request):
     if request.method == "POST":
         # return render(request, "upload_paper.html")
         exam_title = request.POST.get("exam_title")
+
         question_content = request.POST.get("question_content")
         options = request.POST.getlist('option')  # 获取所有选项的值
         correct_answer = request.POST.get("correct_answer")
+        essay_question = request.POST.get("essay_question")
+        essay_answer = request.POST.get("essay_answer")
         # 创建或获取试卷
         exam, _ = Exam.objects.get_or_create(examtitle=exam_title)
         # 创建问题选项
-        QuestionOption.objects.create(
+        if exam_title is not None and options is not None and correct_answer is not None:
+            QuestionOption.objects.create(
             exam=exam,
             content=question_content,
             options=options,
             correct_answer=correct_answer
-        )
-        # 处理上传成功的情况，可以跳转到相应页面或显示成功信息
-        return render(request, "upload_paper.html", {"ok_msg":"upload ok"})
+            )
+            return render(request, "upload_paper.html", {"option__msg": "upload ok"})
+        # 创建主观题
+        if essay_question is not None and essay_answer is not None:
+            EssayQuestion.objects.create(exam=exam, question_text=essay_question, answer_text=essay_answer)
+            # 处理上传成功的情况，可以跳转到相应页面或显示成功信息
+            return render(request, "upload_paper.html", {"essay_msg":"upload ok"})
+
     return render(request, "upload_paper.html")
 
 def viewpaper(request):
     # exam = Exam.objects.get(id=exam_id)
     exam = Exam.objects.get(examtitle="exam1")
     questions = QuestionOption.objects.filter(exam=exam)
+    essay_questions = EssayQuestion.objects.filter(exam=exam)
     context = {
         'exam': exam,
         'questions': questions
     }
-    return render(request, 'view_paper.html', {'exam': exam, 'questions': questions})
+    return render(request, 'view_paper.html', {'exam': exam, 'questions': questions, 'essay_questions':essay_questions})
