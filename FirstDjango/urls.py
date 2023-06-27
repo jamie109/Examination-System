@@ -55,7 +55,7 @@ urlpatterns = [
     path('stupage/<int:stuid>/score/', views.stuscore),
 ################################ teacher ###########################
     path('teapage/', views.teapage),
-    path('showteainfo/', views.showteainfo),
+    path('teapage/showteainfo/', views.showteainfo),
     path('teapage/viewpaper/', views.teaviewpaper),
     path('teapage/<int:teaid>/scorepaper/', views.teatoscore),
     path('teapage/<int:teaid>/scorepaper/<int:stuid>/', views.teascorepaper),
