@@ -306,4 +306,5 @@ def viewpaper(request):
         'exam': exam,
         'questions': questions
     }
-    return render(request, 'view_paper.html', {'exam': exam, 'questions': questions, 'essay_questions':essay_questions})
+    return render(request, 'view_paper.html', {'exam': exam, 'questions': questions, 'essay_questions':essay_questions
+                                               ,'index_map':{'0': 'A', 1: 'B','2': 'C'}})

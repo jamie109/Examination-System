@@ -3,13 +3,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Check Paper</title>
+    <title>View Paper</title>
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.css' %}">
     <style>
         .navbar {
             border-right: 0;
         }
+
+        .bg-info {
+            font-size: 18px; /* 调整文字大小 */
+            text-align: center; /* 文字居中显示 */
+        }
     </style>
+    <script>
+        function mapNumberToLetter(number) {
+            return String.fromCharCode(number + 65);
+        }
+
+        function getCharCodeAt(string, index) {
+            return string.charCodeAt(index);
+        }
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -23,7 +37,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">英语六级报考系统：查看试卷</a>
+            <a class="navbar-brand">英语六级报考系统：管理员查看试卷</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,41 +59,86 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<h1>管理员查看试卷</h1>
-
-
-<form>
-    <ul>
-        {% for question in questions %}
-            <div>
-                <h3>Question:</h3>
-                <p>{{ question.content }}</p>
-                <h4>Options:</h4>
-                <ul>
-                    {% for option in question.options %}
-                        <li>{{ option }}</li>
-                    {% endfor %}
-                </ul>
-                <h4>Correct Answer:</h4>
-                <p>{{ question.correct_answer }}</p>
-            </div>
-            <hr>
-        {% endfor %}
-    </ul>
-    <ul>
-    {% for essQ in essay_questions %}
-        <div>
-        <h3>Essay Question:</h3>
-        <p>{{ essQ.question_text }}</p>
-        <h4>Essay Answer:</h4>
-        <p>{{ essQ.answer_text }}</p>
+{#<h1>管理员查看试卷</h1>#}
+<div class="container" style="width: 84%;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="margin-bottom: 10px">试题及答案</h3>
         </div>
-        {% endfor %}
-    </ul>
-{#    <input type="hidden" name="question_id" value="{{ question.id }}">#}
-    <a href="http://127.0.0.1:8000/adminpage/">返回</a>
+        <div class="panel-body">
+            {#                ！！！！！这里要加 method="post"#}
+            <form class="form-horizontal" action="http://127.0.0.1:8000/adminpage/uploadpaper/" method="post">
+                {% csrf_token %}
+                {#                <div class="content-2">#}
+                {#                    <!-- 这里是空白区域的内容 -->#}
+                {#                </div>#}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="exam_title">试卷名字：exam1</label>
 
-</form>
+                </div>
+                <div>
+                    <p class="bg-info" style="">客观题</p>
+                </div>
+                {% for optQ in questions %}
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">客观题{{ forloop.counter }}:</label>
+                        <div class="col-sm-11">
+                            <p class="form-control-static">{{ optQ.content }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">选项1</label>
+                        <div class="col-sm-6">
+                            <p class="form-control-static">{{ optQ.options.0 }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">选项2</label>
+                        <div class="col-sm-6">
+                            <p class="form-control-static">{{ optQ.options.1 }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">选项3</label>
+                        <div class="col-sm-6">
+                            <p class="form-control-static">{{ optQ.options.2 }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">正确选项：{{ optQ.correct_answer }} </label>
+                        {#                        <div class="col-sm-6">#}
+                        {#                            <p class="form-control-static"></p>#}
+                        {#                        </div>#}
+                    </div>
+                    <hr>
+                {% endfor %}
+
+                <div>
+                    <p class="bg-info" style="">主观题</p>
+                </div>
+                {% for essQ in essay_questions %}
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">主观题{{ forloop.counter }}:</label>
+                        <div class="col-sm-11">
+                            <p class="form-control-static">{{ essQ.question_text }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">答案:</label>
+                        <div class="col-sm-11">
+                            <p class="form-control-static">{{ essQ.answer_text }}</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                {% endfor %}
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
