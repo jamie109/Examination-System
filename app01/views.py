@@ -288,7 +288,7 @@ def uploadpaper(request):
             options=options,
             correct_answer=correct_answer
             )
-            return render(request, "upload_paper.html", {"option__msg": "upload ok"})
+            return render(request, "upload_paper.html", {"option_msg": "upload ok"})
         # 创建主观题
         if essay_question is not None and essay_answer is not None:
             EssayQuestion.objects.create(exam=exam, question_text=essay_question, answer_text=essay_answer)

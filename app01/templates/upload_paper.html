@@ -9,6 +9,11 @@
         .navbar {
             border-right: 0;
         }
+
+        .bg-success {
+        font-size: 24px;     /* 调整文字大小 */
+        text-align: center;  /* 文字居中显示 */
+    }
     </style>
 </head>
 <body>
@@ -45,47 +50,148 @@
     </div><!-- /.container-fluid -->
 </nav>
 
+{# 这里是表单#}
+<div class="container" style="width: 84%;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="margin-bottom: 10px">上传试题及答案</h3>
+        </div>
+        <div class="panel-body">
+            {#                ！！！！！这里要加 method="post"#}
+            <form class="form-horizontal" action="http://127.0.0.1:8000/adminpage/uploadpaper/" method="post">
+                {% csrf_token %}
+{#                <div class="content-2">#}
+{#                    <!-- 这里是空白区域的内容 -->#}
+{#                </div>#}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="exam_title">试卷名字</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" name="exam_title" value="exam1">
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <p class="bg-success" >上传客观题</p>
+                </div>
 
-<form action="http://127.0.0.1:8000/adminpage/uploadpaper/" method="post">
-    {% csrf_token %}
-    <h1>输入试卷名称</h1>
-    <label for="exam_title">Exam Title:</label>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="question_content">客观题题目</label>
+                    <div class="col-sm-10">
+                        <textarea name="question_content" style="width: 800px; height: 70px;"></textarea>
+                        {#                        <input type="text" class="form-control" placeholder="Name" name="studentname">#}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="option1">选项A</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="option" style="width: 800px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="option2">选项B</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="option" style="width: 800px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="option3">选项C</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="option" style="width: 800px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="correct_answer">正确选项</label>
+                    <div class="col-sm-10">
+                        <input type="radio" name="correct_answer" value="1"> 选项A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="correct_answer" value="2"> 选项B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="correct_answer" value="3"> 选项C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success" value="Upload">上传选择题</button>
+                        <span style="color: orchid;">{{ option_msg }}</span>
+                    </div>
+                </div>
 
-    <input type="text" name="exam_title" value="exam1" ><br><br>
-    <h1>上传选择题</h1>
-    <label for="question_content">Question Content:</label>
-    <textarea name="question_content" ></textarea><br><br>
+                <hr>
 
-    <label for="option1">Option 1:</label>
-    <input type="text" name="option" ><br>
+               <div>
+                    <p class="bg-success" >上传主观题</p>
+                </div>
+{#                <label for="question_text">Question Text:</label>#}
+{#                <textarea name="essay_question"></textarea><br><br>#}
 
-    <label for="option2">Option 2:</label>
-    <input type="text" name="option" ><br>
+                {#                <label for="answer_text">Answer Text:</label>#}
+                {#                <textarea name="essay_answer"></textarea><br><br>#}
+                {##}
+                {#                <input type="submit" value="Upload">#}
+                {#                <span style="color: orchid;">{{ essay_msg }}</span>#}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="essay_question">主观题题目</label>
+                    <div class="col-sm-10">
+                        <textarea name="essay_question" style="width: 800px; height: 70px;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="essay_answer">主观题答案</label>
+                    <div class="col-sm-10">
+                        <textarea name="essay_answer" style="width: 800px; height: 70px;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success" value="Upload">上传主观题</button>
+                        <span style="color: orchid;">{{ essay_msg }}</span>
+                    </div>
+                </div>
+            </form>
 
-    <label for="option3">Option 3:</label>
-    <input type="text" name="option" ><br>
+        </div>
+    </div>
+</div>
 
-    <label for="correct_answer">Correct Answer:</label>
-    {#        <input type="text" name="correct_answer" required><br><br>#}
-    <input type="radio" name="correct_answer" value="1" > Option 1
-    <input type="radio" name="correct_answer" value="2" > Option 2
-    <input type="radio" name="correct_answer" value="3" > Option 3<br>
 
-    <input type="submit" value="Upload" name="option">
-    <span style="color: orchid;">{{ option_msg }}</span>
-    <br>
-    <h1>上传主观题</h1>
-    <label for="question_text">Question Text:</label>
-    <textarea name="essay_question" ></textarea><br><br>
-
-    <label for="answer_text">Answer Text:</label>
-    <textarea name="essay_answer" ></textarea><br><br>
-
-    <input type="submit" value="Upload">
-    <span style="color: orchid;">{{ essay_msg }}</span>
-    <hr>
-    <a href="http://127.0.0.1:8000/adminpage/">返回</a>
-</form>
+{#<form action="http://127.0.0.1:8000/adminpage/uploadpaper/" method="post">#}
+{#    {% csrf_token %}#}
+{#    <h1>输入试卷名称</h1>#}
+{#    <label for="exam_title">Exam Title:</label>#}
+{##}
+{#    <input type="text" name="exam_title" value="exam1"><br><br>#}
+{#    <h1>上传选择题</h1>#}
+{#    <label for="question_content">Question Content:</label>#}
+{#    <textarea name="question_content"></textarea><br><br>#}
+{##}
+{#    <label for="option1">Option 1:</label>#}
+{#    <input type="text" name="option"><br>#}
+{##}
+{#    <label for="option2">Option 2:</label>#}
+{#    <input type="text" name="option"><br>#}
+{##}
+{#    <label for="option3">Option 3:</label>#}
+{#    <input type="text" name="option"><br>#}
+{##}
+{#    <label for="correct_answer">Correct Answer:</label>#}
+{#        <input type="text" name="correct_answer" required><br><br>#}
+{#    <input type="radio" name="correct_answer" value="1"> Option 1#}
+{#    <input type="radio" name="correct_answer" value="2"> Option 2#}
+{#    <input type="radio" name="correct_answer" value="3"> Option 3<br>#}
+{##}
+{#    <input type="submit" value="Upload" name="option">#}
+{#    <span style="color: orchid;">{{ option_msg }}</span>#}
+{#    <br>#}
+{#    <h1>上传主观题</h1>#}
+{#    <label for="question_text">Question Text:</label>#}
+{#    <textarea name="essay_question"></textarea><br><br>#}
+{##}
+{#    <label for="answer_text">Answer Text:</label>#}
+{#    <textarea name="essay_answer"></textarea><br><br>#}
+{##}
+{#    <input type="submit" value="Upload">#}
+{#    <span style="color: orchid;">{{ essay_msg }}</span>#}
+{#    <hr>#}
+{#    <a href="http://127.0.0.1:8000/adminpage/">返回</a>#}
+{#</form>#}
 
 <script src="{% static 'js/code.jquery.com_jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.min.js' %}"></script>
