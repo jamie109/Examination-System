@@ -9,3 +9,12 @@ python .\manage.py migrate
 ```
 python .\manage.py runserver 4537
 ```
+## 删除表中内容但保留表结构
+```
+-- 禁用外键约束
+SET FOREIGN_KEY_CHECKS = 0;
+-- 清空表
+TRUNCATE TABLE 表名;
+-- 启用外键约束
+SET FOREIGN_KEY_CHECKS = 1;
+```
