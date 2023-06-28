@@ -77,9 +77,9 @@
                 </div>
                 {% for optQ in questions %}
                     <div class="form-group">
-                        <label class="col-sm-1 control-label">客观题{{ forloop.counter }}:</label>
+                        <label class="col-sm-1 control-label">客观题{{ forloop.counter}}:</label>
                         <div class="col-sm-11">
-                            <p class="form-control-static">{{ optQ.content }}</p>
+                            <p class="form-control-static">{{ optQ.content|safe }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -118,7 +118,7 @@
                     <div class="form-group">
                         <label class="col-sm-1 control-label">主观题{{ forloop.counter }}:</label>
                         <div class="col-sm-11">
-                            <p class="form-control-static">{{ essQ.question_text }}</p>
+                            <p class="form-control-static">{{ essQ.question_text|safe }}</p>
                         </div>
                     </div>
                     <div class="form-group">
