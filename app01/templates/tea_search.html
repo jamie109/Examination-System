@@ -31,14 +31,14 @@
         <li><a href="#"></a></li>
           <li><a href="#"></a></li>
           <li>
-              <form class="navbar-form navbar-left" action="http://127.0.0.1:8000/teainfo/search/" method="GET">
+              <form class="navbar-form navbar-left" action="http://127.0.0.1:4537/teainfo/search/" method="GET">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="输入教师姓名" name="searchname">
         </div>
-        <button type="submit" class="btn btn-default" href="http://127.0.0.1:8000/teainfo/search/">确定</button>
+        <button type="submit" class="btn btn-default" href="http://127.0.0.1:4537/teainfo/search/">确定</button>
       </form>
           </li>
-        <li><a href="http://127.0.0.1:8000/teainfo/">返回上一页面</a></li>
+        <li><a href="http://127.0.0.1:4537/teainfo/">返回上一页面</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -88,9 +88,9 @@
                 <td>{{ obj.password }}</td>
 
                 <td>
-                  <a class="btn btn-primary btn-xs" href="http://127.0.0.1:8000/teainfo/{{ obj.id }}/edit/" >编辑</a>
+                  <a class="btn btn-primary btn-xs" href="http://127.0.0.1:4537/teainfo/{{ obj.id }}/edit/" >编辑</a>
 
-                  <a class="btn btn-danger btn-xs" href="http://127.0.0.1:8000/teainfo/delete/?teaid={{ obj.id }}">删除</a>
+                  <a class="btn btn-danger btn-xs" href="http://127.0.0.1:4537/teainfo/delete/?teaid={{ obj.id }}">删除</a>
               </td>
 
                 </tr>

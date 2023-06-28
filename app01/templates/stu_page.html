@@ -82,15 +82,15 @@
                 <li><a></a></li>
                 <li><a></a></li>
 
-                <li><a href="http://127.0.0.1:8000/stupage/?stuid={{ uid }}">刷新</a></li>
-                <li><a href="http://127.0.0.1:8000/login/">退出登录</a></li>
+                <li><a href="http://127.0.0.1:4537/stupage/?stuid={{ uid }}">刷新</a></li>
+                <li><a href="http://127.0.0.1:4537/login/">退出登录</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <br>
                 <span>你好，学生用户{{ uid }}！</span>
                 {#        <li>#}
-                {#            <a href="http://127.0.0.1:8000/teainfo/">教师信息管理</a>#}
+                {#            <a href="http://127.0.0.1:4537/teainfo/">教师信息管理</a>#}
                 {#        </li>#}
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -118,7 +118,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-8">
                                 <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-1"
-                                        onclick="window.location.href='http://127.0.0.1:8000/stupage/showstuinfo/?stuid={{ uid }}';">
+                                        onclick="window.location.href='http://127.0.0.1:4537/stupage/showstuinfo/?stuid={{ uid }}';">
                                     查看个人信息
                                 </button>
                             </div>
@@ -126,14 +126,14 @@
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-8">
                                 <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-2"
-                                        onclick="window.location.href='http://127.0.0.1:8000/stupage/pay/?stuid={{ uid }}';">报名考试
+                                        onclick="window.location.href='http://127.0.0.1:4537/stupage/pay/?stuid={{ uid }}';">报名缴费
                                 </button>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-8">
                                 <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-3"
-                                        onclick="window.location.href='http://127.0.0.1:8000/stupage/{{ uid }}/exam/';">进行考试
+                                        onclick="window.location.href='http://127.0.0.1:4537/stupage/{{ uid }}/exam/';">进行考试
                                 </button>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-8">
                                 <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-4"
-                                        onclick="window.location.href='http://127.0.0.1:8000/stupage/{{ uid }}/score/';">查询考试结果
+                                        onclick="window.location.href='http://127.0.0.1:4537/stupage/{{ uid }}/score/';">查询考试结果
                                 </button>
                             </div>
                         </div>
@@ -152,10 +152,25 @@
 
                 <div class="col-sm-6">
                     <!-- 右侧内容 -->
-                    <h4>标题</h4>
-                    <p>这里是文字内容</p>
-                    <br>
-                    <p>介绍六级考试和学生操作步骤</p>
+                    <h4>欢迎使用英语六级报考系统！</h4>
+                    <p>该系统为准备参加英语六级考试的学生提供了一站式服务，
+                        方便您轻松管理报名、缴费、参加考试以及查看成绩的整个流程。</p>
+
+                    <p>在学生主页中，您可以享受以下四个功能模块：</p>
+                    <ol>
+                        <li>
+                            查看个人信息：您可以随时查看您的个人信息，确保您的姓名、学号、专业等信息准确无误。
+                        </li>
+                        <br>
+                        <li>
+                            报名缴费：通过这个模块，您可以方便地通过安全的在线支付系统完成缴费，缴费完成即可进行在线考试。
+                        </li>
+                        <br>
+                        <li>进行考试：一旦您成功报名并完成缴费，您可以随时进入考试系统进行考试，请注意考试时间为150分钟。</li>
+                        <br>
+                        <li>查看考试成绩：在阅卷结束后，您可以登录系统查看详细的成绩报告。</li>
+                    </ol>
+
                     {#                    <img src="{% static 'img/login.jpg' %}" alt="图片" width="70%">#}
                 </div>
 

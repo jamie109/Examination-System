@@ -31,21 +31,21 @@
         <li><a href="#"></a></li>
           <li><a href="#"></a></li>
           <li>
-              <form class="navbar-form navbar-left" action="http://127.0.0.1:8000/teainfo/search/" method="GET">
+              <form class="navbar-form navbar-left" action="http://127.0.0.1:4537/teainfo/search/" method="GET">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="输入教师姓名" name="searchname">
         </div>
-        <button type="submit" class="btn btn-default" href="http://127.0.0.1:8000/teainfo/search/">确定</button>
+        <button type="submit" class="btn btn-default" href="http://127.0.0.1:4537/teainfo/search/">确定</button>
       </form>
           </li>
-        <li><a href="http://127.0.0.1:8000/teainfo/">刷新</a></li>
-          <li><a href="http://127.0.0.1:8000/adminpage/">返回管理员主页</a></li>
+        <li><a href="http://127.0.0.1:4537/teainfo/">刷新</a></li>
+          <li><a href="http://127.0.0.1:4537/adminpage/">返回管理员主页</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">你好，管理员！</a></li>
 {#        <li>#}
-{#            <a href="http://127.0.0.1:8000/teainfo/">教师信息管理</a>#}
+{#            <a href="http://127.0.0.1:4537/teainfo/">教师信息管理</a>#}
 {#        </li>#}
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -55,7 +55,7 @@
 <div>
     <div class="container">
         <div style="margin-bottom: 20px">
-            <a class="btn btn-success" href="http://localhost:8000/teainfo/add/">添加教师</a>
+            <a class="btn btn-success" href="http://localhost:4537/teainfo/add/">添加教师</a>
         </div>
 
         <div class="panel panel-default">
@@ -88,9 +88,9 @@
                 <td>{{ tea_obj.teaschool }}</td>
                 <td>{{ tea_obj.password }}</td>
                 <td>
-                  <a class="btn btn-primary btn-xs" href="http://127.0.0.1:8000/teainfo/{{ tea_obj.id }}/edit/" >编辑</a>
+                  <a class="btn btn-primary btn-xs" href="http://127.0.0.1:4537/teainfo/{{ tea_obj.id }}/edit/" >编辑</a>
 
-                  <a class="btn btn-danger btn-xs" href="http://127.0.0.1:8000/teainfo/delete/?teaid={{ tea_obj.id }}">删除</a>
+                  <a class="btn btn-danger btn-xs" href="http://127.0.0.1:4537/teainfo/delete/?teaid={{ tea_obj.id }}">删除</a>
               </td>
                 </tr>
             {% endfor %}

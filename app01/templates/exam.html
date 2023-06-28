@@ -15,8 +15,11 @@
             text-align: center; /* 文字居中显示 */
         }
     </style>
+
+
 </head>
 <body>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -37,8 +40,8 @@
                 <li><a></a></li>
                 <li><a></a></li>
 
-                <li><a href="http://127.0.0.1:8000/stupage/{{ stuid }}/exam/">刷新</a></li>
-                <li><a href="http://127.0.0.1:8000/stupage/?stuid={{ stuid }}">返回学生主页</a></li>
+                <li><a href="http://127.0.0.1:4537/stupage/{{ stuid }}/exam/">刷新</a></li>
+                <li><a href="http://127.0.0.1:4537/stupage/?stuid={{ stuid }}">返回学生主页</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -50,7 +53,11 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-{#<h1>管理员查看试卷</h1>#}
+<div id="timer"
+     style="position: fixed; top: 20px; right: 20px; background-color: #f1f1f1; padding: 10px; border-radius: 15px;">
+    考试剩余时间: <span id="countdown">{{ countdown }}</span>
+</div>
+
 <div class="container" style="width: 84%;">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -128,7 +135,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary" value="finishExam" >交卷</button>
+                        <button type="submit" class="btn btn-primary" value="finishExam">交卷</button>
                     </div>
                 </div>
             </form>
@@ -136,7 +143,42 @@
         </div>
     </div>
 </div>
+{# js 要放在页面底部！！！#}
+<script>
+    var countdownElement = document.getElementById("countdown");
+    if (countdownElement === null) {
+        console.error("无法找到倒计时元素。");
+    }
+    // 设置倒计时时间为 150 分钟（转换为秒）
+    var countdownTime = 150 * 60;
+    // 更新倒计时显示
+    function updateCountdown() {
+        var minutes = Math.floor(countdownTime / 60); // 计算剩余分钟数
+        var seconds = countdownTime % 60; // 计算剩余秒数
+        // 格式化时间为 MM 分钟 SS 秒
+        var formattedTime = minutes.toString().padStart(2, '0') + " 分钟 " +
+            seconds.toString().padStart(2, '0') + " 秒";
+        // 更新倒计时元素的内容
+        countdownElement.textContent = formattedTime;
+        // 减少剩余时间
+        countdownTime--;
+        // 检查倒计时是否结束
+        if (countdownTime < 0) {
+            clearInterval(countdownInterval); // 停止定时器
+            countdownElement.textContent = "时间已结束";
+            // 进行其他操作，如提交表单或触发事件
+        }
+    }
+    // 更新倒计时显示并设置每秒更新一次
+    var countdownInterval = setInterval(updateCountdown, 1000);
+
+    // 初始化倒计时显示
+    updateCountdown();
 
 
+</script>
+
+<script src="{% static 'js/code.jquery.com_jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.js' %}"></script>
 </body>
 </html>

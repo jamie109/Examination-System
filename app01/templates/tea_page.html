@@ -82,8 +82,8 @@
                 <li><a></a></li>
                 <li><a></a></li>
 
-                <li><a href="http://127.0.0.1:8000/teapage/?teaid={{ uid }}">刷新</a></li>
-                <li><a href="http://127.0.0.1:8000/login/">退出登录</a></li>
+                <li><a href="http://127.0.0.1:4537/teapage/?teaid={{ uid }}">刷新</a></li>
+                <li><a href="http://127.0.0.1:4537/login/">退出登录</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -119,7 +119,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-8">
                                 <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-3"
-                                        onclick="window.location.href='http://127.0.0.1:8000/teapage/showteainfo/?teaid={{ uid }}';">查看个人信息
+                                        onclick="window.location.href='http://127.0.0.1:4537/teapage/showteainfo/?teaid={{ uid }}';">查看个人信息
                                 </button>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-8">
                                 <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-1"
-                                        onclick="window.open('http://127.0.0.1:8000/teapage/viewpaper/','_blank');">查看试题及答案
+                                        onclick="window.open('http://127.0.0.1:4537/teapage/viewpaper/','_blank');">查看试题及答案
                                 </button>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-8">
                                 <button type="button" class="btn btn-primary btn-lg btn-block custom-btn custom-btn-4"
-                                        onclick="window.location.href='http://127.0.0.1:8000/teapage/{{ uid }}/scorepaper/';">进行阅卷
+                                        onclick="window.location.href='http://127.0.0.1:4537/teapage/{{ uid }}/scorepaper/';">进行阅卷
                                 </button>
                             </div>
                         </div>
@@ -161,11 +161,21 @@
 
                 <div class="col-sm-6">
                     <!-- 右侧内容 -->
-                    <h4>标题</h4>
-                    <p>这里是文字内容</p>
-                    <br>
-                    <p>介绍六级考试和教师操作步骤</p>
-                    {#                    <img src="{% static 'img/login.jpg' %}" alt="图片" width="70%">#}
+                    <h4>欢迎使用英语六级报考系统！</h4>
+                    <p>我们的系统为阅卷教师提供了一系列强大的功能，以简化和优化您的工作流程。</p>
+                    <p>在阅卷教师主页中，您可以享受以下三个个功能模块：</p>
+                    <ol>
+                        <li>
+                            查看个人信息：通过这个功能，您可以轻松查看和管理您的个人信息，包括姓名、工号和其他相关信息。
+                        </li>
+                        <br>
+                        <li>
+                            查看试题和答案：您可以在系统中方便地查看六级考试的试题和对应的答案，这使您能够快速了解考试内容和参考答案，以便更好地进行阅卷。
+                        </li>
+                        <br>
+                        <li>进行阅卷：系统提供了便捷的阅卷功能，让您能够高效地批改学生的答卷。您可以对学生的答案进行评分，并记录评分结果，评分之后如有不妥还可以修改分数。</li>
+
+                    </ol>
                 </div>
 
             </div>

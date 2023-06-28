@@ -84,13 +84,13 @@ def stuadd(request):
     # 添加到数据库
     StuInfo.objects.create(stuname=studentname, stuid=studentid, stuschool=school, password=pwd)
     # 添加成功自动跳转
-    return redirect("http://127.0.0.1:8000/stuinfo/")
+    return redirect("http://127.0.0.1:4537/stuinfo/")
 
 def studelete(request):
     """删除学生"""
     stu_id = request.GET.get('stuid')
     StuInfo.objects.filter(id=stu_id).delete()
-    return redirect("http://127.0.0.1:8000/stuinfo/")
+    return redirect("http://127.0.0.1:4537/stuinfo/")
 
 def stuedit(request, stuid):
     """编辑学生信息"""
@@ -110,7 +110,7 @@ def stuedit(request, stuid):
     pwd = request.POST.get("pwd")
     StuInfo.objects.filter(id=stuid).update(stuname=studentname, stuid=studentid, stuschool=school, password=pwd)
     # 修改成功自动跳转
-    return redirect("http://127.0.0.1:8000/stuinfo/")
+    return redirect("http://127.0.0.1:4537/stuinfo/")
 
 def stusearch(request):
     searchname = request.GET.get("searchname")
@@ -139,13 +139,13 @@ def teaadd(request):
     # 添加到数据库
     TeacherInfo.objects.create(teaname=name, teaid=tid, teaschool=school, password=pwd)
     # 添加成功自动跳转
-    return redirect("http://127.0.0.1:8000/teainfo/")
+    return redirect("http://127.0.0.1:4537/teainfo/")
 
 def teadelete(request):
     """删除教师"""
     tea_id = request.GET.get('teaid')
     TeacherInfo.objects.filter(id=tea_id).delete()
-    return redirect("http://127.0.0.1:8000/teainfo/")
+    return redirect("http://127.0.0.1:4537/teainfo/")
 
 def teaedit(request, teaid):
     """编辑教师信息"""
@@ -161,7 +161,7 @@ def teaedit(request, teaid):
 
     TeacherInfo.objects.filter(id=teaid).update(teaname=name, teaid=tid, teaschool=school, password=pwd)
     # 修改成功自动跳转
-    return redirect("http://127.0.0.1:8000/teainfo/")
+    return redirect("http://127.0.0.1:4537/teainfo/")
 
 def teasearch(request):
     searchname = request.GET.get("searchname")
@@ -187,14 +187,14 @@ def login(request):
         # 管理员 只有一个账号
         if option == "1":
             if uid == "001" and password == "admin001":
-                return redirect("http://127.0.0.1:8000/adminpage/")
+                return redirect("http://127.0.0.1:4537/adminpage/")
             return render(request, "login.html", {"error_msg_pwd": "用户名或密码错误"})
         elif option == "2": # 教师
             teacher = TeacherInfo.objects.filter(teaid=uid).first()
             if teacher is None:
                 return render(request, "login.html", {"error_msg_id": "用户不存在，请先注册"})
             if password == teacher.password:
-                return HttpResponseRedirect(f"http://127.0.0.1:8000/teapage/?teaid={uid}")
+                return HttpResponseRedirect(f"http://127.0.0.1:4537/teapage/?teaid={uid}")
             else:
                 return render(request, "login.html", {"error_msg_pwd": "密码错误"})
         else:# 学生
@@ -202,7 +202,7 @@ def login(request):
             if stu is None:
                 return render(request, "login.html", {"error_msg_id": "用户不存在，请先注册"})
             if password == stu.password:
-                return HttpResponseRedirect(f"http://127.0.0.1:8000/stupage/?stuid={uid}")
+                return HttpResponseRedirect(f"http://127.0.0.1:4537/stupage/?stuid={uid}")
                 #return redirect("http://127.0.0.1:8000/student/")
             else:
                 return render(request, "login.html", {"error_msg_pwd": "密码错误"})
@@ -348,7 +348,7 @@ def exam(request,stuid):
             #print(essQid, essAnswer)
             AnsEssayQ.objects.create(stuid=student, essQid=essQ, stuAns=essAnswer)
             print(student,essQ,essAnswer)
-        return HttpResponseRedirect(f"http://127.0.0.1:8000/stupage/?stuid={stuid}")
+        return HttpResponseRedirect(f"http://127.0.0.1:4537/stupage/?stuid={stuid}")
 
     return render(request, "exam.html", {"stuid":stuid,'exam': exam, 'questions': questions, 'essay_questions':essay_questions})
 
@@ -379,7 +379,7 @@ def teascorepaper(request,teaid,stuid):
         ess_score_total = EssAnswers.aggregate(total_score=models.Sum('score')).get('total_score', 0)
         student.score = opt_score_total + ess_score_total
         student.save()
-        return HttpResponseRedirect(f"http://127.0.0.1:8000/teapage/{teaid}/scorepaper/")
+        return HttpResponseRedirect(f"http://127.0.0.1:4537/teapage/{teaid}/scorepaper/")
 
     return render(request, "tea_score_paper.html",{"teaid":teaid, "stuid":stuid,"EssAnswers":EssAnswers})
 
