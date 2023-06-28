@@ -24,7 +24,6 @@ urlpatterns = [
     # path('user/delete/', views.userdelete),
     # path('tpl/', views.tpl),
     # path('news/', views.news),
-    # path('login/', views.login),
     # path('orm/', views.orm),
     #
     ################################ 学生、教师信息管理 增删改查 finish  #############################
