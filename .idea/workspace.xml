@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f662baee-5e6a-4696-b57d-70f5ff85e4ed" name="变更" comment="finish">
+      <change beforePath="$PROJECT_DIR$/app01/templates/exam.html" beforeDir="false" afterPath="$PROJECT_DIR$/app01/templates/exam.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2RdV8kBooYml0EiihCSdE5IYcV3" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/workspace/IDEA/Examination-System/app01/static/img&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\workspace\IDEA\Examination-System\app01\static\img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\workspace\IDEA\Examination-System\app01\static" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django 服务器.Examination-System">
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Examination-System" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Examination-System" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Examination-System" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="FirstDjango.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="f662baee-5e6a-4696-b57d-70f5ff85e4ed" name="变更" comment="" />
+      <created>1687579787859</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687579787859</updated>
+      <workItem from="1687579789200" duration="3507000" />
+      <workItem from="1687583343598" duration="15318000" />
+      <workItem from="1687679500364" duration="24110000" />
+      <workItem from="1687750045014" duration="111000" />
+      <workItem from="1687750189974" duration="5596000" />
+      <workItem from="1687783841450" duration="10820000" />
+      <workItem from="1687834574399" duration="15349000" />
+      <workItem from="1687861488407" duration="17784000" />
+      <workItem from="1687915248266" duration="562000" />
+      <workItem from="1687915840791" duration="23954000" />
+    </task>
+    <task id="LOCAL-00001" summary="v1">
+      <created>1687581514908</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687581514908</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update frame">
+      <created>1687584850281</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687584850281</updated>
+    </task>
+    <task id="LOCAL-00003" summary="database mysql">
+      <created>1687602171478</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687602171479</updated>
+    </task>
+    <task id="LOCAL-00004" summary="delete info">
+      <created>1687616242082</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687616242082</updated>
+    </task>
+    <task id="LOCAL-00005" summary="首页">
+      <created>1687617384912</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1687617384912</updated>
+    </task>
+    <task id="LOCAL-00006" summary="学生教师信息 前端">
+      <created>1687690683022</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1687690683022</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[管理员]学生信息的增删改查">
+      <created>1687698816171</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687698816171</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[管理员]教师信息的增删改查 更新学生查找界面">
+      <created>1687703817821</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1687703817821</updated>
+    </task>
+    <task id="LOCAL-00009" summary="登录">
+      <created>1687710263046</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1687710263046</updated>
+    </task>
+    <task id="LOCAL-00010" summary="管理员主页">
+      <created>1687754793656</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1687754793656</updated>
+    </task>
+    <task id="LOCAL-00011" summary="学生注册">
+      <created>1687754903953</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1687754903953</updated>
+    </task>
+    <task id="LOCAL-00012" summary="stupage">
+      <created>1687786830873</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1687786830873</updated>
+    </task>
+    <task id="LOCAL-00013" summary="teapage">
+      <created>1687787989331</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1687787989331</updated>
+    </task>
+    <task id="LOCAL-00014" summary="stu checkinfo">
+      <created>1687791744389</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1687791744389</updated>
+    </task>
+    <task id="LOCAL-00015" summary="teacher checkinfo &amp;&amp; stupay">
+      <created>1687794206852</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1687794206852</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update adminpage">
+      <created>1687794582379</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1687794582379</updated>
+    </task>
+    <task id="LOCAL-00017" summary="admin upload\check paper v1">
+      <created>1687836125114</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1687836125114</updated>
+    </task>
+    <task id="LOCAL-00018" summary="optionQuestion v1">
+      <created>1687841454524</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1687841454524</updated>
+    </task>
+    <task id="LOCAL-00019" summary="[admin]upload\view optionQuestion">
+      <created>1687843666439</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1687843666439</updated>
+    </task>
+    <task id="LOCAL-00020" summary="[admin]upload\view essayQuestion">
+      <created>1687845804744</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1687845804744</updated>
+    </task>
+    <task id="LOCAL-00021" summary="[admin]upload\view essayQuestion v2">
+      <created>1687845885474</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1687845885474</updated>
+    </task>
+    <task id="LOCAL-00022" summary="上传试题前端finish">
+      <created>1687848569187</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1687848569187</updated>
+    </task>
+    <task id="LOCAL-00023" summary="view paper">
+      <created>1687852852613</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1687852852613</updated>
+    </task>
+    <task id="LOCAL-00024" summary="student exam v1">
+      <created>1687868767636</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1687868767636</updated>
+    </task>
+    <task id="LOCAL-00025" summary="teacher score v1">
+      <created>1687870097023</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1687870097023</updated>
+    </task>
+    <task id="LOCAL-00026" summary="teacher score finish">
+      <created>1687871990040</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1687871990040</updated>
+    </task>
+    <task id="LOCAL-00027" summary="student check scores">
+      <created>1687874056088</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1687874056088</updated>
+    </task>
+    <task id="LOCAL-00028" summary="教师阅卷：增加已阅/未阅字段。">
+      <created>1687879499136</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1687879499136</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Almost done&#10;😊">
+      <created>1687880123580</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1687880123580</updated>
+    </task>
+    <task id="LOCAL-00030" summary="change port &amp;&amp; add timer">
+      <created>1687920469699</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1687920469699</updated>
+    </task>
+    <task id="LOCAL-00031" summary="delete unnecessary functs/files">
+      <created>1687922786630</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1687922786630</updated>
+    </task>
+    <task id="LOCAL-00032" summary="实现了输出换行">
+      <created>1687924628107</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1687924628107</updated>
+    </task>
+    <task id="LOCAL-00033" summary="finish">
+      <created>1687927091442</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1687927091442</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="登录" />
+    <MESSAGE value="管理员主页" />
+    <MESSAGE value="学生注册" />
+    <MESSAGE value="stupage" />
+    <MESSAGE value="teapage" />
+    <MESSAGE value="stu checkinfo" />
+    <MESSAGE value="teacher checkinfo &amp;&amp; stupay" />
+    <MESSAGE value="update adminpage" />
+    <MESSAGE value="admin upload\check paper v1" />
+    <MESSAGE value="optionQuestion v1" />
+    <MESSAGE value="[admin]upload\view optionQuestion" />
+    <MESSAGE value="[admin]upload\view essayQuestion" />
+    <MESSAGE value="[admin]upload\view essayQuestion v2" />
+    <MESSAGE value="上传试题前端finish" />
+    <MESSAGE value="view paper" />
+    <MESSAGE value="student exam v1" />
+    <MESSAGE value="teacher score v1" />
+    <MESSAGE value="teacher score finish" />
+    <MESSAGE value="student check scores" />
+    <MESSAGE value="教师阅卷：增加已阅/未阅字段。" />
+    <MESSAGE value="Almost done&#10;" />
+    <MESSAGE value="change port &amp;&amp; add timer" />
+    <MESSAGE value="delete unnecessary functs/files" />
+    <MESSAGE value="实现了输出换行" />
+    <MESSAGE value="finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Examination_System$manage.coverage" NAME="manage 覆盖结果" MODIFIED="1687581471908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
