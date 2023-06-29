@@ -282,7 +282,7 @@ def exam(request,stuid):
                 score = 5
             else:
                 score = 0
-            print(student, optAns, score)
+            #print(student, optAns, score)
             AnsOptionQ.objects.create(stuid=student, optQid=optQ, stuAns=optAns, score=score)
 
         for count, essQ in enumerate(essay_questions):
@@ -290,7 +290,7 @@ def exam(request,stuid):
             essAnswer = request.POST.get("stu_essay_answer"+str(count+1))
             #print(essQid, essAnswer)
             AnsEssayQ.objects.create(stuid=student, essQid=essQ, stuAns=essAnswer)
-            print(student,essQ,essAnswer)
+            #print(student,essQ,essAnswer)
         return HttpResponseRedirect(f"http://127.0.0.1:4537/stupage/?stuid={stuid}")
 
     return render(request, "exam.html", {"stuid":stuid,'exam': exam, 'questions': questions, 'essay_questions':essay_questions})
